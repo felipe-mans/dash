@@ -1,7 +1,7 @@
 # dash
 Period 6
 
-Members
+##Members
 
 Felipe Mansilla
 David Rothblatt
@@ -10,7 +10,8 @@ Dalton Wu
 Project Idea - Dashboard
 
 We want to create a dashboard: a webpage that contains all your favorite things.
-Features:
+
+###Features:
 
 * Weather of your selected cities
 * Sports news/scores
@@ -21,7 +22,7 @@ Features:
 * Notes
 * Timer
 
-Possible advanced feautures:
+###Possible advanced feautures:
 
 * Mini MP3 player
 * Mini game
