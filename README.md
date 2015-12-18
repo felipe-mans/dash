@@ -1,15 +1,13 @@
 # dash
-Period 6
+Welcome to dash. 
+
+Our goal is to create a user-friendly, highly customizable dashboard that houses a bunch of your favorite stuff all on one site. Users will make accounts and change their settings as they wish. When logged in, dash will display the many different things (clock, weather, sports stats, notepad, etc) that the user chooses to include on their dash. 
 
 ## Members
 
 * Felipe Mansilla
 * David Rothblatt
 * Dalton Wu
-
-## Project Idea - Dashboard
-
-We want to create a dashboard: a webpage that contains all your favorite things.
 
 ### Features:
 
