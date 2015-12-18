@@ -9,8 +9,9 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 * David Rothblatt
 * Dalton Wu
 
-### Features:
+## Features:
 
+### Basics:
 * Weather of your selected cities
 * Sports news/scores
 * Top news stories
@@ -19,10 +20,12 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 * Todo List
 * Notes
 * Timer
+* ... and more
 
-### Possible advanced feautures:
+### Possible, More Advanced Features:
 
 * Mini MP3 player
 * Mini game
 * Email service
+* ... and more
 
