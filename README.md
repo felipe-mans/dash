@@ -3,9 +3,9 @@ Period 6
 
 ##Members
 
-Felipe Mansilla\n
-David Rothblatt\n
-Dalton Wu\n
+*Felipe Mansilla
+*David Rothblatt
+*Dalton Wu
 
 Project Idea - Dashboard
 
