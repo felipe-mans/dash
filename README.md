@@ -5,8 +5,8 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 
 ## Members
 
+* David Rothblatt (team leader)
 * Felipe Mansilla
-* David Rothblatt
 * Dalton Wu
 
 ## Features:
