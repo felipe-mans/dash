@@ -2,7 +2,10 @@ from flask import Flask
 from flask import redirect, render_template, request, session
 import time
 
-@app.route('')
+app = Flask(__name__)
+
+
+@app.route('/')
 @app.route('/home')
 def home():
     return render_template('index.html')    
@@ -41,3 +44,7 @@ def user():
                                message='You are not a registered user!')
     userdata = dbm.get_user_by_username(user)
     return render_template('user.html', userdata=userdata)
+
+if __name__ == '__main__':
+  app.debug = True
+  app.run(host="0.0.0.0", port=8000)
