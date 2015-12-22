@@ -4,6 +4,9 @@ import time
 
 from server.util import Util
 from server.database_manager import DatabaseManager
+dbm = DatabaseManager.create()
+
+
 app = Flask(__name__)
 
 
@@ -25,7 +28,7 @@ def login():
     # Logs the user in if they are authorized.
     username = request.form.get('username', '')
     password = request.form.get('password', '')
-    if dbm.authenticate(username, password):
+    if authenticate(username, password):
         session['user'] = username
         return redirect('/user')
     return render_template('login.html',
