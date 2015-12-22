@@ -23,7 +23,7 @@ def login():
     # Logs the user in if they are authorized.
     username = request.form.get('username', '')
     password = request.form.get('password', '')
-    if dbm.is_user_authenticated(username, password):
+    if authenticate(username, password):
         session['user'] = username
         return redirect('/user')
     return render_template('login.html',
@@ -34,6 +34,32 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+### REGISTER
+## From David and Alvin's api-project
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+  if request.method == 'GET':
+    return render_template('register.html')
+
+  username = request.form.get('username', '')
+  password = request.form.get('password', '')
+  confirm_password = request.form.get('confirm_password', '')
+  # mail = request.form.get('email','')
+  # Check the validity of the username.
+  if Util.checkUsername(username) and password == confirm_password:
+    # If the username was valid, attempt to register the user.
+    if dbm.register_user(username, password):
+      # settings page.
+      session['user'] = username
+      return redirect('/user')
+    # If the registration was not successful, keep them here and
+    # tell them the error.
+    return render_template('register.html', message='Username taken.')
+  # If their username was invalid, tell them so.
+  return render_template('register.html', message='Invalid username or password')
+
 
 ### USER SETTINGS PAGE
 @app.route('/user')
