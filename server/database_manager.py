@@ -36,7 +36,7 @@ class DatabaseManager():
     db.users.create_index('username', unique=True)
     return DatabaseManager(client, db)
 
-  def register_user(self, username, password, zipcode, phone):
+  def register_user(self, username, password):
     """
     Registers a user into the database and returns True upon success or
     False if the registration failed. This method will fail if the user
@@ -47,9 +47,6 @@ class DatabaseManager():
       self.db['users'].insert_one({
         'username': username,
         'password': Util.hash(password),
-        'zipcode': zipcode,
-        'phone': phone,
-        'metric': False
       })
       return True
     except:

@@ -4,8 +4,10 @@ import time
 
 from server.util import Util
 from server.database_manager import DatabaseManager
+
 app = Flask(__name__)
 
+dbm = DatabaseManager.create()
 
 @app.route('/')
 @app.route('/home')
@@ -48,11 +50,19 @@ def register():
   username = request.form.get('username', '')
   password = request.form.get('password', '')
   confirm_password = request.form.get('confirm_password', '')
-  # mail = request.form.get('email','')
   # Check the validity of the username.
+  print dbm.get_all_users()
+  print "check0"
+  print username
+  print Util.checkUsername(username)
+  print password
+  print confirm_password
+
   if Util.checkUsername(username) and password == confirm_password:
+    print "check1"
     # If the username was valid, attempt to register the user.
     if dbm.register_user(username, password):
+      print "check2"
       # settings page.
       session['user'] = username
       return redirect('/user')
@@ -75,4 +85,6 @@ def user():
 
 if __name__ == '__main__':
   app.debug = True
+  app.secret_key = 'blah'
+  dbm.set_user_password("davidrothblatt","porzingis6")
   app.run(host="0.0.0.0", port=8000)
