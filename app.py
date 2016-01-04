@@ -29,7 +29,7 @@ def login():
     password = request.form.get('password', '')
     if dbm.authenticate(username, password):
         session['user'] = username
-        return redirect('/user')
+        return redirect('/user_settings')
     return render_template('login.html',
                            error_message='Invalid credentials. Try again')
 
@@ -65,7 +65,7 @@ def register():
       print "check2"
       # settings page.
       session['user'] = username
-      return redirect('/user')
+      return redirect('/user_settings')
     # If the registration was not successful, keep them here and
     # tell them the error.
     return render_template('register.html', message='Username taken.')
@@ -74,14 +74,14 @@ def register():
 
 
 ### USER SETTINGS PAGE
-@app.route('/user')
-def user():
+@app.route('/user_settings')
+def user_settings():
     user = session.get('user', None)
     if not user:
         return render_template('register.html',
                                message='You are not a registered user!')
     userdata = dbm.get_user_by_username(user)
-    return render_template('user.html', userdata=userdata)
+    return render_template('user.html', username=user, userdata=userdata)
 
 if __name__ == '__main__':
   app.debug = True
