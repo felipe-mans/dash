@@ -16,6 +16,18 @@ def getWeatherByCity(StateAbbrv, CityName):
   result = "%s: %s, %s degrees F." % (location, weather, temp_f)
   f.close()
   return result
+
+#NYTIMES API
+#Key: c64d2df8a7a0fcef44688bd7e18df8c9:14:73937184 (article search)
+#Key: c47995663adcb790f7a5e8f921b24680:9:73937184 (most popular)
+#Key: ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184 (top stories)
+
+
+
+
+
+
+
   
 print getWeatherByCity('CA', 'San_Francisco') 
 print getWeatherByCity('NY', 'Brooklyn')
