@@ -4,7 +4,7 @@ import urllib2, json
 # Needs State abbreviation
 # Needs City name
 def getWeather(StateAbbrv, CityName):
-  f = urllib2.urlopen('http://api.wunderground.com/api/bac9dac8506a2912/geolookup/conditions/q/NY/Forest_Hills.json')
+  f = urllib2.urlopen('http://api.wunderground.com/api/bac9dac8506a2912/geolookup/conditions/q/%s/%s.json' % (StateAbbrv, CityName))
   json_string = f.read()
   parsed_json = json.loads(json_string)
   location = parsed_json['location']['city']
@@ -12,3 +12,5 @@ def getWeather(StateAbbrv, CityName):
   result = "Current temperature in %s is: %s" % (location, temp_f)
   f.close()
   return result
+  
+print getWeather(CA, San_Francisco) 
