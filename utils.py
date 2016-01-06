@@ -22,14 +22,14 @@ def getWeatherByCity(StateAbbrv, CityName):
 #Key: c47995663adcb790f7a5e8f921b24680:9:73937184 (most popular)
 #Key: ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184 (top stories)
 
+def getTopStories(section):
+  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184' % (section))
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  print parsed_json
 
 
-
-
-
-
-  
 print getWeatherByCity('CA', 'San_Francisco') 
 print getWeatherByCity('NY', 'Brooklyn')
 print getWeatherByCity('CA', 'Los_Angeles')
-
+print getTopStories('sports')
