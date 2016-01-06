@@ -2,8 +2,11 @@ import urllib2, json
 
 # Needs State abbreviation
 # Needs City name
+
 def getWeatherByCity(StateAbbrv, CityName):
-  f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s/%s.json' % (Key, StateAbbrv, CityName))
+  key = "bac9dac8506a2912"
+
+  f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s/%s.json' % (key, StateAbbrv, CityName))
   #http://api.wunderground.com/api/Your_Key/forecast/q/CA/San_Francisco.json
   json_string = f.read()
   parsed_json = json.loads(json_string)
@@ -17,6 +20,8 @@ def getWeatherByCity(StateAbbrv, CityName):
   return result
 
 def getTopStories(section):
+  key = "ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184"
+
   f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=%s' % (section, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
@@ -26,4 +31,27 @@ def getTopStories(section):
 print getWeatherByCity('CA', 'San_Francisco') 
 print getWeatherByCity('NY', 'Brooklyn')
 print getWeatherByCity('CA', 'Los_Angeles')
+
 print getTopStories('sports')
+
+# Needs State abbreviation
+# Needs City name
+def getWeatherByZip(zip):
+  key = "bac9dac8506a2912"
+
+  f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s.json' % (key, zip))
+  #http://api.wunderground.com/api/Your_Key/forecast/q/CA/San_Francisco.json
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+	
+  location = parsed_json['location']['city']
+  temp_f = parsed_json['current_observation']['temp_f']
+  weather = parsed_json['current_observation']['weather']
+  
+  result = ('%s (%s): %s. %s degrees F.' % (location, zip, weather, temp_f))
+  f.close()
+  return result
+
+print getWeatherByZip(10024)
+print getWeatherByZip(90210)
+print getWeatherByZip(94101)
