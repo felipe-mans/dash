@@ -17,13 +17,16 @@ def getWeatherByCity(StateAbbrv, CityName):
   return result
 
 def getTopStories(section):
-  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=%s' % (section, key))
+  key = ''
+  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
-  print parsed_json
-
-
-print getWeatherByCity('CA', 'San_Francisco') 
-print getWeatherByCity('NY', 'Brooklyn')
-print getWeatherByCity('CA', 'Los_Angeles')
-print getTopStories('sports')
+  i = 0
+  while (i < 5 ):
+    print parsed_json['results'][i]['title']
+    i = i+1
+    
+#print getWeatherByCity('CA', 'San_Francisco') 
+#print getWeatherByCity('NY', 'Brooklyn')
+#print getWeatherByCity('CA', 'Los_Angeles')
+getTopStories('home')
