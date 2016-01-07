@@ -20,7 +20,6 @@ def getWeatherByCity(StateAbbrv, CityName):
   return result
 
 def getTopStories(section):
-<<<<<<< HEAD
   key = ''
   f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, key))
   json_string = f.read()
@@ -34,18 +33,17 @@ def getTopStories(section):
 #print getWeatherByCity('NY', 'Brooklyn')
 #print getWeatherByCity('CA', 'Los_Angeles')
 getTopStories('home')
-=======
-  key = ""
+#  key = ""
 
-  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=%s' % (section, key))
-  json_string = f.read()
-  parsed_json = json.loads(json_string)
-  print parsed_json
+#  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=%s' % (section, key))
+#  json_string = f.read()
+#  parsed_json = json.loads(json_string)
+#  print parsed_json
 
 
-print getWeatherByCity('CA', 'San_Francisco') 
-print getWeatherByCity('NY', 'Brooklyn')
-print getWeatherByCity('CA', 'Los_Angeles')
+#print getWeatherByCity('CA', 'San_Francisco') 
+#print getWeatherByCity('NY', 'Brooklyn')
+#print getWeatherByCity('CA', 'Los_Angeles')
 
 print getTopStories('sports')
 
@@ -67,7 +65,6 @@ def getWeatherByZip(zip):
   f.close()
   return result
 
-print getWeatherByZip(10024)
-print getWeatherByZip(90210)
-print getWeatherByZip(94101)
->>>>>>> 5c01c4d8c174994a724b91362c2244ca49b9bbad
+#print getWeatherByZip(10024)
+#print getWeatherByZip(90210)
+#print getWeatherByZip(94101)
