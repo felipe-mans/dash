@@ -2,8 +2,8 @@ document.getElementById("audioInput").addEventListener("change", function() {
 	console.log("Something changed!");
 	
     var audio = document.getElementById("audio");
-	var audioInput = document.getElementById("audioInput")
-	var filename = audioInput.value;
+    var audioInput = document.getElementById("audioInput")
+	var filename = audioInput.value.split('\\').pop();
 	
 	console.log("Audio filename = " + filename);
 	
