@@ -47,16 +47,23 @@ def getWeatherByZip(zip):
 #
 # Parameters: Section of the New York Times (home, sports, etc.)
 def getTopStories(section):
-  key = ''
+  key = 'ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184'
   f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
+
+  top10 = []
   i = 0
-  result = '\n'
-  while (i < 5 ):
-    result = result + parsed_json['results'][i]['title'] + '\n'
-    i = i+1
-  return result
+  while i < 10:
+    data = parsed_json['results'][i]
+    result = data['title'] + "\n" + data['byline'] + " | " + data['section'] + \
+           "\n" + data['abstract'] + "\n" + data['url'] + "\n" + \
+           data['published_date'] 
+    top10.append(result)
+    i += 1
+    return result
+
+
 
 
 
