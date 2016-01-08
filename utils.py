@@ -1,8 +1,7 @@
 import urllib2, json
 
-# Needs State abbreviation
-# Needs City name
 
+#Parameters: Abbreviation of the state, the name of the city
 def getWeatherByCity(StateAbbrv, CityName):
   key = ""
 
@@ -19,36 +18,25 @@ def getWeatherByCity(StateAbbrv, CityName):
   f.close()
   return result
 
+#Parameters: Section of the New York Times (home, sports, etc.)
 def getTopStories(section):
-  key = ''
+  key = 'ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184'
   f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
   i = 0
+  result = '\n'
   while (i < 5 ):
-    print parsed_json['results'][i]['title']
+    result = result + parsed_json['results'][i]['title'] + '\n'
     i = i+1
+  return result
     
 #print getWeatherByCity('CA', 'San_Francisco') 
 #print getWeatherByCity('NY', 'Brooklyn')
 #print getWeatherByCity('CA', 'Los_Angeles')
-getTopStories('home')
-#  key = ""
+print getTopStories('home')
 
-#  f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.JSON?api-key=%s' % (section, key))
-#  json_string = f.read()
-#  parsed_json = json.loads(json_string)
-#  print parsed_json
-
-
-#print getWeatherByCity('CA', 'San_Francisco') 
-#print getWeatherByCity('NY', 'Brooklyn')
-#print getWeatherByCity('CA', 'Los_Angeles')
-
-print getTopStories('sports')
-
-# Needs State abbreviation
-# Needs City name
+#Parameters: Zipcode of the area you want (in the U.S.)
 def getWeatherByZip(zip):
   key = ""
 
