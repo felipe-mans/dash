@@ -61,7 +61,7 @@ def getTopStories(section):
            data['published_date'] 
     top10.append(result)
     i += 1
-    return result
+  return top10
 
 #---------- getMostPop ----------
 #
