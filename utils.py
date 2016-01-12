@@ -61,9 +61,28 @@ def getTopStories(section):
            data['published_date'] 
     top10.append(result)
     i += 1
-    return result
+  return top10
 
+#---------- getMostPop ----------
+#
+# Will return the 10 most popular stories of the given section from the New York Times. Popularity can be determined by the most-viewed, most-emailed or most-shared articles.
+# Can return the most popular stories in the last day, 7 days or 10 days
+#
+# Parameters: Specific option (mostviewed, mostemailed, or mostshared), Section of the New York Times (home, sports, etc.), Number of days that content appeared (1, 7 or 10)
+def getMostPop(option, section, days):
+  key = ''
+  f = urllib2.urlopen('http://api.nytimes.com/svc/mostpopular/v2/%/%/%.json?api-key=%s' % (option, section, days, key))
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  
+  i = 0
+  result = ''
+  while i < 10:
+    data = parsed_json['results'][i]
+    result = result + data['title'] + '\n' + data['byline'] + '|' + data['section'] + '\n' + data['abstract'] + '\n' + data['url'] + '\n' + data['published_date']
+    i = i + 1
 
+  return result
 
 
 
