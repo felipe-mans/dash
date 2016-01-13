@@ -3,13 +3,16 @@ var ctx = canvas.getContext("2d");
 var RADIUS = canvas.height / 2;
 ctx.translate(RADIUS, RADIUS);
 
-// draw everything a little bit inside
-drawClock(RADIUS*0.90);
+// draw everything just a little bit inside the canvas
+RADIUS = RADIUS * 0.90;
 
-function drawClock(r) {
-	drawFace(ctx, r);
-	drawNumbers(ctx, r);
-	drawTime(ctx, r);
+drawClock();
+
+function drawClock() {
+	console.log("BLOOP");
+	drawFace(ctx, RADIUS);
+	drawNumbers(ctx, RADIUS);
+	setInterval(drawTime(), 1000, ctx, RADIUS);
 }
 
 function drawFace(ctx, r) {
@@ -67,11 +70,12 @@ function drawTime(ctx, r) {
 					+ second / 60;
 	
 	drawHand(ctx, hour, r*0.5, r*0.07);
-	drawHand(ctx, minute, r*0.8, r*0.07);
+	drawHand(ctx, minute, r*0.8, r*0.04);
 	drawHand(ctx, second, r*0.9, r*0.02);
 }
 
 function drawHand(ctx, angle, length, width) {
+	ctx.strokeStyle = "#333";
 	ctx.beginPath();
 	ctx.lineWidth = width;
 	ctx.lineCap = "round";
