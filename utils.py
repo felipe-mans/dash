@@ -136,7 +136,7 @@ NBAgames =  NBA_D_Sched(2016, 01  , 13 )
 
 for i in NBAgames:
   result = i['away_team'] + " @ " + i['home_team'] + "\n"
-  result += i['time'] + '\n'
+  result += i['time'][11:16]+ "\n"
   result += i['arena'] + ", " + i['city'] + '\n'
   result += i['TV_station'] + '\n\n'
   print result
