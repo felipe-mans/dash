@@ -67,9 +67,7 @@ function drawTime(ctx, r) {
 					+ second / 60;
 	var hour = now.getHours() % 12
 					+ minute / 60
-					+ second / 60;
-	
-	ctx.lineWidth = 42424242;
+					+ second / 60 / 60;
 	
 	drawHand(ctx, hour, r*0.5, r*0.07);
 	drawHand(ctx, minute, r*0.8, r*0.04);
