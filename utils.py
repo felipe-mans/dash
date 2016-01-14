@@ -47,7 +47,7 @@ def getWeatherByZip(zip):
 #
 # Parameters: Section of the New York Times (home, sports, etc.)
 def getTopStories(section):
-  key = ''
+  key = 'ae6374a908a1d1e71c4e91ae7d2fffb7:2:73937184'
   f = urllib2.urlopen('http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
@@ -70,19 +70,20 @@ def getTopStories(section):
 #
 # Parameters: Specific option (mostviewed, mostemailed, or mostshared), Section of the New York Times (home, sports, etc.), Number of days that content appeared (1, 7 or 10)
 def getMostPop(option, section, days):
-  key = ''
-  f = urllib2.urlopen('http://api.nytimes.com/svc/mostpopular/v2/%/%/%.json?api-key=%s' % (option, section, days, key))
+  key = 'c47995663adcb790f7a5e8f921b24680:9:73937184'
+  f = urllib2.urlopen('http://api.nytimes.com/svc/mostpopular/v2/%s/%s/%s.json?api-key=%s' % (option, section, days, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
-  
+
+  mostpop = []
   i = 0
   result = ''
-  while i < 10:
+  while i < 5:
     data = parsed_json['results'][i]
-    result = result + data['title'] + '\n' + data['byline'] + '|' + data['section'] + '\n' + data['abstract'] + '\n' + data['url'] + '\n' + data['published_date']
+    result = data['title'] + '\n' + data['byline'] + ' | ' + data['section'] + '\n' + data['abstract'] + '\n' + data['url'] + '\n' + data['published_date']
     i = i + 1
-
-  return result
+    mostpop.append(result)
+  return mostpop
 
 
 
@@ -94,4 +95,15 @@ def getMostPop(option, section, days):
 #print getWeatherByCity('CA', 'San_Francisco')
 #print getWeatherByCity('NY', 'Brooklyn')
 #print getWeatherByCity('CA', 'Los_Angeles')
-print getTopStories('home')
+
+top10 = getTopStories('home')
+for i in top10:
+  print i
+  print "\n"
+
+print "\n\n\n NEXT \n\n\n"
+
+mostpop = getMostPop('mostviewed', 'sports', '1')
+for i in mostpop:
+  print i
+  print "\n"
