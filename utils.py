@@ -95,7 +95,7 @@ def getMostPop(option, section, days):
 #print getWeatherByCity('CA', 'San_Francisco')
 #print getWeatherByCity('NY', 'Brooklyn')
 #print getWeatherByCity('CA', 'Los_Angeles')
-
+'''
 top10 = getTopStories('home')
 for i in top10:
   print i
@@ -107,3 +107,36 @@ mostpop = getMostPop('mostviewed', 'sports', '1')
 for i in mostpop:
   print i
   print "\n"
+'''
+
+def NBA_D_Sched(year, month, day):
+  key = 'vxanp3p3cspvv57g9sg7y3mh'
+  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/games/%s/%s/%s/schedule.json?api_key=%s' % ( str(year), str(month), str(day), key))
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  games_json = parsed_json["games"]
+
+  games = []
+
+  for i in games_json:
+    game = {}
+    game['home_team'] = i["home"]["alias"]
+    game['away_team'] = i["away"]["alias"]
+    game['arena'] = i["venue"]["name"]
+    game['city'] = i["venue"]["city"]
+    game['time'] = i["scheduled"]
+    game['TV_station'] = i["broadcast"]["network"]
+    games.append(game)
+
+  return games
+
+# input: YYYY/MM/DD
+# ex: 2016/01/13
+NBAgames =  NBA_D_Sched(2016, 01  , 13 )
+
+for i in NBAgames:
+  result = i['away_team'] + " @ " + i['home_team'] + "\n"
+  result += i['time'][11:16]+ "\n"
+  result += i['arena'] + ", " + i['city'] + '\n'
+  result += i['TV_station'] + '\n\n'
+  print result
