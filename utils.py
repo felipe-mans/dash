@@ -130,6 +130,7 @@ def NBA_D_Sched(year, month, day):
 
   return games
 
+'''
 # input: YYYY/MM/DD
 # ex: 2016/01/13
 NBAgames =  NBA_D_Sched(2016, 01  , 13 )
@@ -140,3 +141,18 @@ for i in NBAgames:
   result += i['arena'] + ", " + i['city'] + '\n'
   result += i['TV_station'] + '\n\n'
   print result
+'''
+
+def NBA_League_Leaders(stat):
+  key = 'vxanp3p3cspvv57g9sg7y3mh'
+  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=vxanp3p3cspvv57g9sg7y3mh')
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  cats = parsed_json["categories"].index(i.get("name") == stat)
+  for i in cats:
+    if i.get = 
+    print i.get("name", "points")
+
+  games = []
+
+NBA_League_Leaders('blocks')
