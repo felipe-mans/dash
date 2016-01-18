@@ -168,8 +168,14 @@ pts_leaders =  NBA_League_Leaders('points')
 ass_leaders =  NBA_League_Leaders('assists')
 rbs_leaders =  NBA_League_Leaders('rebounds')
 blks_leaders = NBA_League_Leaders('blocks')
+stl_leaders = NBA_League_Leaders('steals')
+min_leaders = NBA_League_Leaders('minutes')
+field_goals_made_leaders = NBA_League_Leaders('field_goals_made')
 
 print pts_leaders
 print ass_leaders
 print rbs_leaders
 print blks_leaders
+print stl_leaders
+print min_leaders
+print field_goals_made_leaders
