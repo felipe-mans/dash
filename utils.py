@@ -1,4 +1,6 @@
 import urllib2, json
+from operator import itemgetter
+
 
 #----------------------- API Functions ----------------------------------
 
@@ -148,11 +150,26 @@ def NBA_League_Leaders(stat):
   f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=vxanp3p3cspvv57g9sg7y3mh')
   json_string = f.read()
   parsed_json = json.loads(json_string)
-  cats = parsed_json["categories"].index(i.get("name") == stat)
+  cats = parsed_json["categories"]
+  #for i in cats:
+  #  print i["name"]
+  leaders = []
   for i in cats:
-    if i.get = 
-    print i.get("name", "points")
+    if i["name"] == stat: 
+      for j in i["ranks"]:
+        leaders.append( {
+                         "name": j["player"]["full_name"],
+                         stat: j["average"][stat]
+                         })
+      sorted_leaders = sorted(leaders, key=itemgetter(stat), reverse=True) 
+      return sorted_leaders
 
-  games = []
+pts_leaders =  NBA_League_Leaders('points')
+ass_leaders =  NBA_League_Leaders('assists')
+rbs_leaders =  NBA_League_Leaders('rebounds')
+blks_leaders = NBA_League_Leaders('blocks')
 
-NBA_League_Leaders('blocks')
+print pts_leaders
+print ass_leaders
+print rbs_leaders
+print blks_leaders
