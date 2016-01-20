@@ -85,7 +85,3 @@ function drawHand(ctx, angle, length, width) {
 	ctx.stroke();
 	ctx.rotate(-angle);
 }
-
-
-url = 'http://www.seqmedia.com/css-3d-transforms-digital-clock/'
-
