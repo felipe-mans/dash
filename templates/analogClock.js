@@ -7,7 +7,7 @@ ctx.translate(RADIUS, RADIUS);
 RADIUS = RADIUS * 0.90;
 
 drawClock(ctx, RADIUS);
-setInterval(drawClock, 1000, ctx, RADIUS);
+setInterval(drawClock, 10, ctx, RADIUS);
 
 function drawClock(ctx, r) {
     var now = new Date();
@@ -61,7 +61,7 @@ function drawNumbers(ctx, r) {
 function drawTime(now, ctx, r) {
 	// time --> angle
 	// and gotta make sure those angles are exact!
-	var second = now.getSeconds() * Math.PI / 30;
+	var second = (now.getSeconds() + now.getMilliseconds() / 1000) * Math.PI / 30;
 	var minute = now.getMinutes() * Math.PI / 30
 					+ second / 60;
 	var hour = now.getHours() % 12
