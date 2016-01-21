@@ -10,12 +10,13 @@ drawClock(ctx, RADIUS);
 setInterval(drawClock, 1000, ctx, RADIUS);
 
 function drawClock(ctx, r) {
-	drawFace(ctx, r);
+    var now = new Date();
+	drawFace(now, ctx, r);
 	drawNumbers(ctx, r);
-	drawTime(ctx, r);
+	drawTime(now, ctx, r);
 }
 
-function drawFace(ctx, r) {
+function drawFace(now, ctx, r) {
 	var grad;
 	
 	ctx.beginPath();
@@ -57,11 +58,9 @@ function drawNumbers(ctx, r) {
 	}
 }
 
-function drawTime(ctx, r) {
-	var now = new Date();
-	
+function drawTime(now, ctx, r) {
 	// time --> angle
-	// gotta make sure those angles are exact!
+	// and gotta make sure those angles are exact!
 	var second = now.getSeconds() * Math.PI / 30;
 	var minute = now.getMinutes() * Math.PI / 30
 					+ second / 60;

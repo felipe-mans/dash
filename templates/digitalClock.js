@@ -12,5 +12,5 @@ function displayClock() {
     var time = ["" + ~~(hour/10) + hour % 10,
                 "" + ~~(minute/10) + minute % 10,
                 "" + ~~(second/10) + second % 10];
-    clock.innerHTML = time.join(":") + (hour > 12 ? " p.m." : " a.m.");
+    clock.innerHTML = time.join(":") + (hour >= 12 ? " p.m." : " a.m.");
 };
