@@ -126,28 +126,36 @@ def NBA_D_Sched(year, month, day):
     game['away_team'] = i["away"]["alias"]
     game['arena'] = i["venue"]["name"]
     game['city'] = i["venue"]["city"]
-    game['time'] = i["scheduled"]
+    standard_game_time_hr = 7
+    standard_game_time_min = 0
+    game_time_hr = int(i["scheduled"][11:13]) + standard_game_time_hr
+    game_time_min = int(i["scheduled"][14:16]) + standard_game_time_min
+    if game_time_min == 0:
+	game_time_min = "00"
+    game['time'] = str(game_time_hr) + ":" + str(game_time_min)
     game['TV_station'] = i["broadcast"]["network"]
     games.append(game)
 
   return games
 
-'''
+
 # input: YYYY/MM/DD
 # ex: 2016/01/13
-NBAgames =  NBA_D_Sched(2016, 01  , 13 )
+NBAgames =  NBA_D_Sched(2016, 01  , 20 )
+
+print NBAgames
 
 for i in NBAgames:
   result = i['away_team'] + " @ " + i['home_team'] + "\n"
-  result += i['time'][11:16]+ "\n"
+  result += i['time'] + "\n"
   result += i['arena'] + ", " + i['city'] + '\n'
   result += i['TV_station'] + '\n\n'
   print result
-'''
 
+'''
 def NBA_League_Leaders(stat):
-  key = 'vxanp3p3cspvv57g9sg7y3mh'
-  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=vxanp3p3cspvv57g9sg7y3mh')
+  key = 'wabhqqf6vcffkfktmubd3baa'
+  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=wabhqqf6vcffkfktmubd3baa')
   json_string = f.read()
   parsed_json = json.loads(json_string)
   cats = parsed_json["categories"]
@@ -174,8 +182,9 @@ field_goals_made_leaders = NBA_League_Leaders('field_goals_made')
 
 print pts_leaders
 print ass_leaders
-print rbs_leaders
-print blks_leaders
-print stl_leaders
-print min_leaders
-print field_goals_made_leaders
+#print rbs_leaders
+#print blks_leaders
+#print stl_leaders
+#print min_leaders
+#print field_goals_made_leaders
+'''
