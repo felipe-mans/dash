@@ -1,4 +1,4 @@
-import urllib2, json
+import urllib2, json, requests
 from operator import itemgetter
 
 
@@ -141,7 +141,7 @@ def NBA_D_Sched(year, month, day):
 
 # input: YYYY/MM/DD
 # ex: 2016/01/13
-NBAgames =  NBA_D_Sched(2016, 01  , 20 )
+NBAgames =  NBA_D_Sched(2016, 01  , 22 )
 
 print NBAgames
 
@@ -152,11 +152,14 @@ for i in NBAgames:
   result += i['TV_station'] + '\n\n'
   print result
 
-'''
+
 def NBA_League_Leaders(stat):
-  key = 'wabhqqf6vcffkfktmubd3baa'
-  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=wabhqqf6vcffkfktmubd3baa')
-  json_string = f.read()
+  key = 'vxanp3p3cspvv57g9sg7y3mh'
+ # f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=%s' % (key))
+  f = requests.get('http://api.sportradar.us/nba-t3/seasontd/2015/REG/leaders.json?api_key=%s' % (key))
+  print f
+  '''
+  json_string = f.json()
   parsed_json = json.loads(json_string)
   cats = parsed_json["categories"]
   #for i in cats:
@@ -171,7 +174,7 @@ def NBA_League_Leaders(stat):
                          })
       sorted_leaders = sorted(leaders, key=itemgetter(stat), reverse=True) 
       return sorted_leaders
-
+  '''
 pts_leaders =  NBA_League_Leaders('points')
 ass_leaders =  NBA_League_Leaders('assists')
 rbs_leaders =  NBA_League_Leaders('rebounds')
@@ -187,4 +190,4 @@ print ass_leaders
 #print stl_leaders
 #print min_leaders
 #print field_goals_made_leaders
-'''
+
