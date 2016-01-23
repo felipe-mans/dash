@@ -10,7 +10,7 @@ from operator import itemgetter
 #
 # Parameters: Abbreviation of the state, the name of the city
 def getWeatherByCity(StateAbbrv, CityName):
-  key = ""
+  key = "bac9dac8506a2912"
 
   f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s/%s.json' % (key, StateAbbrv, CityName))
   #http://api.wunderground.com/api/Your_Key/forecast/q/CA/San_Francisco.json
@@ -30,7 +30,7 @@ def getWeatherByCity(StateAbbrv, CityName):
 #
 # Parameters: Zipcode of the area you want (in the U.S.)
 def getWeatherByZip(zip):
-  key = ""
+  key = "bac9dac8506a2912"
   f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s.json' % (key, zip))
   json_string = f.read()
   parsed_json = json.loads(json_string)
@@ -141,16 +141,6 @@ def NBA_D_Sched(year, month, day):
 
 # input: YYYY/MM/DD
 # ex: 2016/01/13
-NBAgames =  NBA_D_Sched(2016, 01  , 22 )
-
-print NBAgames
-
-for i in NBAgames:
-  result = i['away_team'] + " @ " + i['home_team'] + "\n"
-  result += i['time'] + "\n"
-  result += i['arena'] + ", " + i['city'] + '\n'
-  result += i['TV_station'] + '\n\n'
-  print result
 
 
 def NBA_League_Leaders(stat):
@@ -174,7 +164,7 @@ def NBA_League_Leaders(stat):
                          })
       sorted_leaders = sorted(leaders, key=itemgetter(stat), reverse=True) 
       return sorted_leaders
-  '''
+ 
 pts_leaders =  NBA_League_Leaders('points')
 ass_leaders =  NBA_League_Leaders('assists')
 rbs_leaders =  NBA_League_Leaders('rebounds')
@@ -190,4 +180,29 @@ print ass_leaders
 #print stl_leaders
 #print min_leaders
 #print field_goals_made_leaders
+'''
 
+
+
+#### OUTPUT TESTING
+
+NBAgames =  NBA_D_Sched(2016, 01  , 23 )
+
+for i in NBAgames:
+  result = i['away_team'] + " @ " + i['home_team'] + "\n"
+  result += i['time'] + "\n"
+  result += i['arena'] + ", " + i['city'] + '\n'
+  result += i['TV_station'] + '\n\n'
+  print result
+
+x =  getMostPop('mostviewed', 'sports', '1')
+for i in x:
+  print i +"\n"
+print"\n\n"
+y =  getTopStories('sports')
+for i in y:
+  print i+"\n"
+print "\n\n"
+print getWeatherByCity('NY', 'Brooklyn')
+print getWeatherByCity('CA', 'San_Francisco')
+print getWeatherByZip('10024')
