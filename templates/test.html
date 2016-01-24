@@ -75,6 +75,9 @@
 		  <div class="col-md-4">
 		    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
 		  </div>
+		  <div class="col-md-4">
+		    <div id="digitalClock" class="digitalClock"></div>
+		  </div>
 		</div>
             
 
@@ -98,5 +101,6 @@
 	  </div>
 	</div>
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
+	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
   </body>
 </html>
