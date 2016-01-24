@@ -109,18 +109,31 @@
 	  <div class="container">
 	    <div class="row">
 	      <div class = "col-md-4">
+		<table class = "table table-striped">
+		  <thead> 
+		    <tr>
+		      <th> Your News.  </th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    {% for i in news %}
+		    <tr> <td> <b> {{ i['title'] }} </b> <br>{{ i['byline'] }} | Section: {{i['section']}} <br>
+			Date: {{i['published']}} <br> <br> <u>Abstract:</u> <i>  {{ i['abstract'] }} </i> <br> <a href={{i['url']}}> Go To Article </a> <br>
+		    {% endfor %}
+		  </tbody>
+		</table>
 	      </div>
 	      <div class = "col-md-4">
 		<table class = "table table-striped">
 		  <thead> 
 		    <tr>
-		      <th> Today's Games </th>
+		      <th> Your Games. </th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		    {% for i in nba_schedule %}
-		    <tr> <td> {{ i['away_team'] }}  @ {{ i['home_team'] }} <br> {{ i['time'] }} PM <br>
-			Location: {{ i['arena'] }} ,  {{ i['city'] }} <br> Channel: {{ i['TV_station'] }} <br> </td> </tr>
+		    <tr> <td><b> {{ i['away_team'] }} @ {{ i['home_team'] }} </b> <br> {{ i['time'] }} PM <br>
+			Location: {{ i['arena'] }},  {{ i['city'] }} <br> Channel: {{ i['TV_station'] }} <br> </td> </tr>
 		    {% endfor %}
 		  </tbody>
 		</table>

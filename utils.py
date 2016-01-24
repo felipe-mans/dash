@@ -56,12 +56,18 @@ def getTopStories(section):
 
   top10 = []
   i = 0
+
+  result = {}
   while i < 10:
+    item = {}
     data = parsed_json['results'][i]
-    result = data['title'] + "\n" + data['byline'] + " | " + data['section'] + \
-           "\n" + data['abstract'] + "\n" + data['url'] + "\n" + \
-           data['published_date'] 
-    top10.append(result)
+    item['title'] = data['title'] 
+    item['byline'] = data['byline']
+    item['section'] = data['section']
+    item['abstract'] = data['abstract']
+    item['url'] = data['url'] 
+    item['published'] = data['published_date']
+    top10.append(item)
     i += 1
   return top10
 
@@ -79,12 +85,17 @@ def getMostPop(option, section, days):
 
   mostpop = []
   i = 0
-  result = ''
-  while i < 5:
+  while i < 10:
+    item = {}
     data = parsed_json['results'][i]
-    result = data['title'] + '\n' + data['byline'] + ' | ' + data['section'] + '\n' + data['abstract'] + '\n' + data['url'] + '\n' + data['published_date']
+    item['title'] = data['title'] 
+    item['byline'] = data['byline']
+    item['section'] = data['section']
+    item['abstract'] = data['abstract']
+    item['url'] = data['url'] 
+    item['published'] = data['published_date']
+    mostpop.append(item)
     i = i + 1
-    mostpop.append(result)
   return mostpop
 
 
