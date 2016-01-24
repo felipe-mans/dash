@@ -61,6 +61,6 @@ function displayClock(twelveHours) {
 	
 	var digitalClock = document.getElementById("digitalClock");
 	
-	digitalClock.style.backgroundColor = "hsl(" + degree + ", 100%, 50%)";
-	digitalClock.style.color = "hsl(" + (degree + 180) % 360 + ", 100%, 50%)";
+	digitalClock.style.backgroundColor = "hsl(" + degree + ", 100%, 90%)";
+	digitalClock.style.color = "black";//"hsl(" + (degree + 180) % 360 + ", 100%, 20%)";
 };

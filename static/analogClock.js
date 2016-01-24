@@ -11,12 +11,17 @@ setInterval(drawClock, 10, ctx, RADIUS);
 
 function drawClock(ctx, r) {
     var now = new Date();
-	var color = "hsl("
-	            + (now.getSeconds() + now.getMilliseconds() / 1000) * 6// + now.getMinutes() * 60) / 10
-				+ ", 100%, 50%)";
-	drawFace(color, ctx, r);
+	// sum up to 360 for hsl
+	var degree = (now.getSeconds() + now.getMilliseconds() / 1000) * 6;// + now.getMinutes() * 60 / 10
+	var colorOutside = "hsl("
+	             + degree
+				 + ", 100%, 50%)";
+	var colorHands = "hsl("
+	             + (180 + degree) % 360
+				 + ", 100%, 50%)";
+	drawFace(colorOutside, ctx, r);
 	drawNumbers(ctx, r);
-	drawHands(now, color, ctx, r);
+	drawHands(now, colorOutside, ctx, r);
 }
 
 function drawFace(color, ctx, r) {
