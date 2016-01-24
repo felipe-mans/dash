@@ -182,7 +182,52 @@ print ass_leaders
 #print field_goals_made_leaders
 '''
 
+#---------- getStandings ----------
+#
+# Will return the current divisional standings in the NBA
+# 
+# Parameters: The desired year... the 2015-2106 season would be '2015'. This API only works for the last three seasons
 
+def getStandings(year):
+  key = ''
+  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/%s/REG/standings.json?api_key=%s' % (year, key))
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  eastdata = parsed_json['conferences'][0]
+  westdata = parsed_json['conferences'][1]
+  
+  d = 0
+  t = 0
+  check = 0
+  result = 'Eastern Conference\n\n'
+  while d < len(eastdata['divisions']):
+    while t < len(eastdata['divisions'][d]['teams']):
+      current = eastdata['divisions'][d]['teams'][t]
+      if t == 0:
+        result += eastdata['divisions'][d]['name'] + "\n\n"
+      result += str(t+1) + '.' + current['market'] + ' ' + current['name'] + '\t'
+      result += str(current['wins']) + '-' + str(current['losses']) + '\t'
+      result += 'Last 10' + ': ' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '\n\n'
+      t = t + 1
+    d = d + 1
+    t = 0
+  
+  west = []
+  d = 0
+  t = 0
+  result += 'Western Conference'
+  while d < len(westdata['divisions']):
+    while t < len(westdata['divisions'][d]['teams']):
+      current = westdata['divisions'][d]['teams'][t]
+      if t == 0:
+        result += westdata['divisions'][d]['name'] + "\n\n"
+      result += str(t+1) + '.' + current['market'] + ' ' + current['name'] + '\t'
+      result += str(current['wins']) + '-' + str(current['losses']) + '\t'
+      result += 'Last 10' + ': ' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '\n\n'
+      t = t + 1
+    d = d + 1
+    t = 0
+  return result
 
 #### OUTPUT TESTING
 
@@ -206,3 +251,4 @@ print "\n\n"
 print getWeatherByCity('NY', 'Brooklyn')
 print getWeatherByCity('CA', 'San_Francisco')
 print getWeatherByZip('10024')
+print getStandings('2015')
