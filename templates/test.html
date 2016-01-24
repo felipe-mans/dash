@@ -50,7 +50,20 @@
         <a href="/about">Learn More</a>
       </div>
     </div> 
-    
+
+    <div class="container">
+      <div class="row">
+	<div class="col-md-4">
+	  <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
+	</div>
+	<div class="col-md-4">
+	  <div id="digitalClock" class="digitalClock"></div>
+	</div>
+      </div>
+    </div>
+       
+    <hr>
+
     <div class = "neighborhood-guides">
         <div class = "container">
         <h2> Bits. </h2>
@@ -71,37 +84,60 @@
 	        </div>
              </div>
         </div>
-		<div class="row">
-		  <div class="col-md-4">
-		    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
-		  </div>
-		  <div class="col-md-4">
-		    <div id="digitalClock" class="digitalClock"></div>
-		  </div>
-		</div>
             
 
-    <div class="learn-more">
+	<div class="learn-more">
 	  <div class="container">
-		<div class="row">
+	    <div class="row">
 	      <div class = "col-md-4">
-			<h3>News Updates</h3>
-			<p> What's new? Find out. Courtesy of the New York Times.</p>
+		<h3>News Updates</h3>
+		<p> What's new? Find out. Courtesy of the New York Times.</p>
 	      </div>
-		  <div class = "col-md-4">
-			<h3>Sports Updates</h3>
-			<p>When is your team playing? What's their record. Find out. Courtesy of Sportsradar.</p>
-		  </div>
-		  <div class = "col-md-4">
-			<h3>Trust and Safety</h3>
-			<p>From Verified ID to our worldwide customer support team, we've got your back.</p>
-			<p><a href="#">Learn about trust at Airbnb</a></p>
-		  </div>
+	      <div class = "col-md-4">
+		<h3>Sports Updates</h3>
+		<p>When is your team playing? What's their record. Find out. Courtesy of Sportsradar.</p>
+	      </div>
+	      <div class = "col-md-4">
+		<h3>Weather Updates</h3>
+		<p> What's the weather like? Don't ask someone. Just find out here. Courtesy of Weather Underground. </p>
+	      </div>
 	    </div>
 	  </div>
 	</div>
+
+	<div class="learn-more">
+	  <div class="container">
+	    <div class="row">
+	      <div class = "col-md-4">
+	      </div>
+	      <div class = "col-md-4">
+		<table class = "table table-striped">
+		  <thead> 
+		    <tr>
+		      <th> Today's Games </th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    {% for i in nba_schedule %}
+		    <tr> <td> {{ i['away_team'] }}  @ {{ i['home_team'] }} <br> {{ i['time'] }} PM <br>
+			Location: {{ i['arena'] }} ,  {{ i['city'] }} <br> Channel: {{ i['TV_station'] }} <br> </td> </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	      </div>
+	      <div class = "col-md-4">
+		<b> {{ weather }} </b>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
 	<!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
   </body>
+  <br>
+  <br>
+  <br>
+  <br>
 </html>

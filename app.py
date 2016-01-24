@@ -2,7 +2,7 @@ from flask import Flask
 from flask import redirect, render_template, request, session
 import time
 
-from server.util import Util
+import utils
 ##from server.database_manager import DatabaseManager
 
 app = Flask(__name__)
@@ -12,11 +12,16 @@ dbm = DatabaseManager.create()
 @app.route('/')
 @app.route('/home')
 def home():
+
     return render_template('index.html')    
 
 @app.route('/test')
 def test():
-    return render_template('test.html')
+    weather = utils.getWeatherByCity('NY', 'Brooklyn')
+    nba_schedule = utils.NBA_D_Sched(2016, 01, 24)
+    return render_template('test.html', 
+                           weather=weather, 
+                           nba_schedule=nba_schedule)
 '''
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
