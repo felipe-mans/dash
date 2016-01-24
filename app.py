@@ -3,7 +3,7 @@ from flask import redirect, render_template, request, session
 import time
 
 from server.util import Util
-from server.database_manager import DatabaseManager
+##from server.database_manager import DatabaseManager
 
 app = Flask(__name__)
 '''
