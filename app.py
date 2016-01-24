@@ -6,14 +6,18 @@ from server.util import Util
 from server.database_manager import DatabaseManager
 
 app = Flask(__name__)
-
+'''
 dbm = DatabaseManager.create()
-
+'''
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('index.html')    
 
+@app.route('/test')
+def test():
+    return render_template('test.html')
+'''
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
 @app.route('/login', methods=['GET', 'POST'])
@@ -82,6 +86,7 @@ def user_settings():
                                message='You are not a registered user!')
     userdata = dbm.get_user_by_username(user)
     return render_template('user.html', username=user, userdata=userdata)
+'''
 
 if __name__ == '__main__':
   app.debug = True
