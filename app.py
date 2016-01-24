@@ -20,10 +20,11 @@ def test():
     weather = utils.getWeatherByCity('NY', 'Brooklyn')
     nba_schedule = utils.NBA_D_Sched(2016, 01, 24)
     news = utils.getMostPop('mostviewed', 'sports', '7')
+    nba_standings = utils.getStandings('2015')
     return render_template('test.html', 
                            weather=weather, 
                            nba_schedule=nba_schedule, 
-                           news=news)
+                           news=news, nba_standings=nba_standings)
 '''
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
