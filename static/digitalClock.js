@@ -24,7 +24,7 @@ months[10] = "November";
 months[12] = "December";
 
 displayClock(twelveHours);
-setInterval(displayClock, 1000, twelveHours);
+setInterval(displayClock, 100, twelveHours);
 
 function displayClock(twelveHours) {
     var clock = document.getElementById("digitalClock");
@@ -51,4 +51,16 @@ function displayClock(twelveHours) {
 	
     clock.innerHTML = time.join(":") + am_pm + "<br>"
 	                  + days[now.getDay()] + ", " + months[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+	
+	// out of 360 for hsl
+	var degree = (now.getSeconds() + now.getMilliseconds() / 1000) * 6;
+	
+	var color = "hsl("
+	            + degree
+				+ ", 100%, 50%)";
+	
+	var digitalClock = document.getElementById("digitalClock");
+	
+	digitalClock.style.backgroundColor = "hsl(" + degree + ", 100%, 50%)";
+	digitalClock.style.color = "hsl(" + (degree + 180) % 360 + ", 100%, 50%)";
 };
