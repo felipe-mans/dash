@@ -1,4 +1,4 @@
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("analogClock");
 var ctx = canvas.getContext("2d");
 var RADIUS = canvas.height / 2;
 ctx.translate(RADIUS, RADIUS);
@@ -11,12 +11,16 @@ setInterval(drawClock, 10, ctx, RADIUS);
 
 function drawClock(ctx, r) {
     var now = new Date();
-	drawFace(now, ctx, r);
+	var color = "hsl("
+	            + (now.getSeconds() + now.getMilliseconds() / 1000) * 6// + now.getMinutes() * 60) / 10
+				+ ", 100%, 50%)";
+	drawFace(color, ctx, r);
 	drawNumbers(ctx, r);
-	drawTime(now, ctx, r);
+	drawHands(now, color, ctx, r);
 }
 
-function drawFace(now, ctx, r) {
+function drawFace(color, ctx, r) {
+	canvas.style.backgroundColor = color;
 	var grad;
 	
 	ctx.beginPath();
@@ -25,16 +29,15 @@ function drawFace(now, ctx, r) {
 	ctx.fill();
 	
 	grad = ctx.createRadialGradient(0, 0, r*0.95, 0, 0, r*1.05);
-	grad.addColorStop(0, '#063');
-	grad.addColorStop(0.5, '#00264d');
-	grad.addColorStop(1, '#603');
+	grad.addColorStop(0, "white");
+	grad.addColorStop(1, "black");
 	ctx.strokeStyle = grad;
 	ctx.lineWidth = r * 0.1;
 	ctx.stroke();
 	
 	ctx.beginPath();
 	ctx.arc(0, 0, r*0.1, 0, 2*Math.PI);
-	ctx.fillStyle = '#333';
+	ctx.fillStyle = "black";
 	ctx.fill();
 }
 
@@ -42,7 +45,7 @@ function drawNumbers(ctx, r) {
 	var ang;
 	var num;
 	
-	ctx.font = r * 0.15 + "px times new roman";
+	ctx.font = r * 0.19 + "px arial";
 	ctx.textBaseline = "middle";
 	ctx.textAlign = "center";
 	
@@ -58,23 +61,25 @@ function drawNumbers(ctx, r) {
 	}
 }
 
-function drawTime(now, ctx, r) {
+function drawHands(now, color, ctx, r) {
 	// time --> angle
-	// and gotta make sure those angles are exact!
-	var second = (now.getSeconds() + now.getMilliseconds() / 1000) * Math.PI / 30;
-	var minute = now.getMinutes() * Math.PI / 30
-					+ second / 60;
-	var hour = now.getHours() % 12
-					+ minute / 60
-					+ second / 60 / 60;
+	var h = now.getHours();
+	var m = now.getMinutes();
+	var s = now.getSeconds() + now.getMilliseconds() / 1000;
+	var hour = h % 12 * Math.PI / 6
+	           + m * Math.PI / 3600
+			   + s * Math.PI / 21600;
+	var minute = m * Math.PI / 30
+	             + s * Math.PI / 1800;
+	var second = (now.getSeconds() + now.getMilliseconds()/1000) * Math.PI / 30;
 	
-	drawHand(ctx, hour, r*0.5, r*0.07);
-	drawHand(ctx, minute, r*0.8, r*0.04);
-	drawHand(ctx, second, r*0.9, r*0.02);
+	drawHand(color, ctx, hour, r*0.5, r*0.07);
+	drawHand(color, ctx, minute, r*0.8, r*0.04);
+	drawHand(color, ctx, second, r*0.9, r*0.02);
 }
 
-function drawHand(ctx, angle, length, width) {
-	ctx.strokeStyle = "#333";
+function drawHand(color, ctx, angle, length, width) {
+	ctx.strokeStyle = color;
 	ctx.beginPath();
 	ctx.lineWidth = width;
 	ctx.lineCap = "round";
