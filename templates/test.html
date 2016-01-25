@@ -49,60 +49,36 @@
         <p>A basket full of useful widgets.</p>
         <a href="/about">Learn More</a>
       </div>
-    </div> 
-
-    <div class="container">
-      <div class="row">
-	<div class="col-md-4">
-	  <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
-	  <div class="checkbox">
-	    <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
-	  </div>
-	  <div class="checkbox">
-	    <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
-	  </div>
-	</div>
-	<div class="col-md-4">
-	  <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
-	  <form>
+      <div class="container">
+	<div class="row">
+	  <div class="col-md-4">
+	    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
 	    <div class="checkbox">
-		  <label><input type="checkbox" id="digitalTwentyFourHours">24-hour</label>
-		</div>
-		<div class="checkbox">
-		  <label><input type="checkbox" id="digitalYesDate" checked>Date</label>
-		</div>
-		<div class="checkbox">
-		  <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
-		</div>
-	  </form>
+	      <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
+	    </div>
+	    <div class="checkbox">
+	      <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
+	    </div>
+	  </div>
+	  <div class="col-md-4">
+	    <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
+	    <form>
+	      <div class="checkbox">
+		<label><input type="checkbox" id="digitalTwentyFourHours">24-hour</label>
+	      </div>
+	      <div class="checkbox">
+		<label><input type="checkbox" id="digitalYesDate" checked>Date</label>
+	      </div>
+	      <div class="checkbox">
+		<label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
+	      </div>
+	    </form>
+	  </div>
 	</div>
       </div>
     </div>
        
     <hr>
-
-    <div class = "neighborhood-guides">
-        <div class = "container">
-        <h2> Bits. </h2>
-        <div class = "row">
-	      <div class = "col-md-4">
-	        <div class = "thumbnail">
-	          <img src="../static/newyorktimes.jpg">
-	        </div>
-	      </div>
-	      <div class = "col-md-4">
-		<div class = "thumbnail">
-	          <img src="../static/sportsradar.jpg">
-	        </div>
-	      </div>
-	      <div class = "col-md-4">
-		<div class = "thumbnail">
-	          <img src="../static/wunderground.jpg">
-	        </div>
-             </div>
-        </div>
-            
-
 	<div class="learn-more">
 	  <div class="container">
 	    <div class="row">
@@ -162,6 +138,27 @@
 	    </div>
 	  </div>
 	</div>
+	
+	<div class = "neighborhood-guides">
+        <div class = "container">
+        <h2> Bits. </h2>
+        <div class = "row">
+	      <div class = "col-md-4">
+	        <div class = "thumbnail">
+	          <img src="../static/newyorktimes.jpg">
+	        </div>
+	      </div>
+	      <div class = "col-md-4">
+		<div class = "thumbnail">
+	          <img src="../static/sportsradar.jpg">
+	        </div>
+	      </div>
+	      <div class = "col-md-4">
+		<div class = "thumbnail">
+	          <img src="../static/wunderground.jpg">
+	        </div>
+             </div>
+        </div>
 
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
