@@ -26,9 +26,9 @@ setInterval(displayClock, 100);
 
 function displayClock(twentyFourHours) {
 	var digitalClock = document.getElementById("digitalClock");
-	var twentyFourHours = document.getElementById("twentyFourHours").checked;
-	var yesDate = document.getElementById("yesDate").checked;
-	var changeColor = document.getElementById("changeColor").checked;
+	var twentyFourHours = document.getElementById("digitalTwentyFourHours").checked;
+	var yesDate = document.getElementById("digitalYesDate").checked;
+	var changeColor = document.getElementById("digitalChangeColor").checked;
     var now = new Date();
     var hour = now.getHours();
     var minute = now.getMinutes();
@@ -66,7 +66,7 @@ function displayClock(twentyFourHours) {
 		digitalClock.style.color = "black";//"hsl(" + (degree + 180) % 360 + ", 100%, 20%)";
 	}
 	else {
-		digitalClock.style.backgroundColor = "white";
-		digitalClock.style.color = "black";
+		digitalClock.style.backgroundColor = "black";
+		digitalClock.style.color = "white";
 	}
 };

@@ -55,18 +55,24 @@
       <div class="row">
 	<div class="col-md-4">
 	  <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
+	  <div class="checkbox">
+	    <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
+	  </div>
+	  <div class="checkbox">
+	    <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
+	  </div>
 	</div>
 	<div class="col-md-4">
 	  <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
 	  <form>
 	    <div class="checkbox">
-		  <label><input type="checkbox" id="twentyFourHours">24-hour</label>
+		  <label><input type="checkbox" id="digitalTwentyFourHours">24-hour</label>
 		</div>
 		<div class="checkbox">
-		  <label><input type="checkbox" id="yesDate" checked>Date</label>
+		  <label><input type="checkbox" id="digitalYesDate" checked>Date</label>
 		</div>
 		<div class="checkbox">
-		  <label><input type="checkbox" id="changeColor" checked>Change color</label>
+		  <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
 		</div>
 	  </form>
 	</div>
@@ -110,7 +116,7 @@
 	      </div>
 	      <div class = "col-md-4">
 		<h3>Weather Updates</h3>
-		<p> What's the weather like? Don't ask someone. Just find out here. Courtesy of Weather Underground. </p>
+		<p> What's the weather like? Don't need to ask someone else. Just find out here. Courtesy of Weather Underground. </p>
 	      </div>
 	    </div>
 	  </div>

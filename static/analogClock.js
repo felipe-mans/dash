@@ -7,21 +7,26 @@ ctx.translate(RADIUS, RADIUS);
 RADIUS = RADIUS * 0.90;
 
 drawClock(ctx, RADIUS);
-setInterval(drawClock, 10, ctx, RADIUS);
 
 function drawClock(ctx, r) {
     var now = new Date();
 	// sum up to 360 for hsl
 	var degree = (now.getSeconds() + now.getMilliseconds() / 1000) * 6;// + now.getMinutes() * 60 / 10
-	var colorOutside = "hsl("
+	var changeColor = document.getElementById("analogChangeColor").checked;
+	var colorOutside = changeColor ? "hsl("
 	             + degree
-				 + ", 100%, 50%)";
-	var colorHands = "hsl("
+				 + ", 100%, 50%)"
+				 : "black";
+	var colorHands = changeColor ? "hsl("
 	             + (180 + degree) % 360
-				 + ", 100%, 50%)";
+				 + ", 100%, 50%)"
+				 : "white";
 	drawFace(colorOutside, ctx, r);
 	drawNumbers(ctx, r);
 	drawHands(now, colorOutside, ctx, r);
+	
+	var interval = document.getElementById("analogSmoothTicks").checked ? 10 : 1000;
+	setTimeout(drawClock, interval, ctx, r);
 }
 
 function drawFace(color, ctx, r) {
