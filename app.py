@@ -24,8 +24,8 @@ def home():
     section = request.form.get('section', '')
     print section
 
-    if section == '':
-        section = 'sports' #default
+    #if section == '':
+    #    section = 'sports' #default
     news = utils.getMostPop('mostviewed', section, '7')
     weather = utils.getWeatherByCity('NY', 'New_York')
     return render_template('test.html', 
