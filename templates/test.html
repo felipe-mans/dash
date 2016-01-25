@@ -30,11 +30,11 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/settings">Settings</a></li>
           </ul>
 	  <ul class="nav navbar-nav pull-right">
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Login</a></li>
           </ul>
 
 
@@ -161,7 +161,7 @@
 		</thead>
 		<tbody>
 		  {% for i in news %}
-		  <tr> <td> <b> {{ i['title'] }} </b> <br>{{ i['byline'] }} | Section: {{i['section']}} <br>
+		  <tr> <td> <b> {{ i['title'] }} </b> <br>{{ i['byline'] }} <br> Section: {{i['section']}} <br>
 		      Date: {{i['published']}} <br> <br> <u>Abstract:</u> <i>  {{ i['abstract'] }} </i> <br> <a href={{i['url']}}> Go To Article </a> <br>
 		      {% endfor %}
 		</tbody>
