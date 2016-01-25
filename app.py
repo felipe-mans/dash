@@ -10,22 +10,31 @@ app = Flask(__name__)
 '''
 dbm = DatabaseManager.create()
 '''
-@app.route('/')
-@app.route('/home')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def home():
     year = str(time.year)
     month = str(time.month)
     if len(month) == 1:
         month = '0' + month
     day = time.day
-    ###
-    weather = utils.getWeatherByCity('NY', 'Brooklyn')
     nba_schedule = utils.NBA_D_Sched(year, month, day) ## daily schedule
-    news = utils.getMostPop('mostviewed', 'sports', '7')
+
+    ## NYT Section ##
+    section = request.form.get('section', '')
+    print section
+
+    if section == '':
+        section = 'sports' #default
+    news = utils.getMostPop('mostviewed', section, '7')
+    weather = utils.getWeatherByCity('NY', 'New_York')
     return render_template('test.html', 
                            weather=weather, 
                            nba_schedule=nba_schedule, 
                            news=news)
+    
+
+
 
 
 @app.route('/about')
