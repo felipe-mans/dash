@@ -217,14 +217,14 @@ def getStandings(year):
       if t == 0:
         result += eastdata['divisions'][d]['name'] + '<br>' + '<table class="table table-striped">'
         result += '<thead><tr><th>Position</th><th>Team Name</th><th>Record</th><th>Win %</th><th>L10</th></tr></thead><tbody>'
-        result += '<tr><td>' + str(t+1) + '</td>' + '<td>' + current['market'] + ' ' + current['name'] + '</td>'
-        result += '<td>' + str(current['wins']) + '-' + str(current['losses']) + '</td>'
-        result += '<td>' + str(current['win_pct']) + '</td>'
-        result += '<td>' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '</td></tr></tbody>'
-        t = t + 1
-        result += '</table><br><br>'
-        d = d + 1
-        t = 0
+      result += '<tr><td>' + str(t+1) + '</td>' + '<td>' + current['market'] + ' ' + current['name'] + '</td>'
+      result += '<td>' + str(current['wins']) + '-' + str(current['losses']) + '</td>' 
+      result += '<td>' + str(current['win_pct']) + '</td>'
+      result += '<td>' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '</td></tr></tbody>'
+      t = t + 1
+    result += '</table><br><br>'
+    d = d + 1
+    t = 0
                                
   west = []
   d = 0
@@ -271,3 +271,5 @@ for i in y:
 #print getWeatherByZip('10024')
 #print getStandings('2015')
 '''
+
+print getStandings('2015')
