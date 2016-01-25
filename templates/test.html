@@ -135,6 +135,7 @@
 		</table>
 	      </div>
 	      <div class = "col-md-4">
+		<br><a href="/nba_standings"> Click Here for Current Standings. </a><br><br>
 		<table class = "table table-striped">
 		  <thead> 
 		    <tr>
@@ -155,26 +156,6 @@
 	    </div>
 	  </div>
 	</div>
-	{% for conference in standings %}
-	<h3>{{ conference['name'] }}</h3><br><br>
-	{% for division in conference['divisions'] %}
-	<h4>{{ division['name'] }}</h4>
-	<table class = "table table-striped">
-	  <thead>
-	    <tr><th>Position</th><th>Team</th><th>Record</th><th>Winning
-	    Percentage</th><th>Last 10</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for team in division['teams'] %}
-	    <tr><td>{{team['position']}}</td><td>{{team['name']}}</td><td>{{team['record']}}</td><td>{{team['win_pct']}}</td><td>{{team['last10']}}</td></tr>
-	    {% endfor %}
-	    </tbody>
-	  </table><br>
-	{% endfor %}
-	<br>
-	{% endfor %}
-
 
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
