@@ -25,6 +25,11 @@ def test():
                            weather=weather, 
                            nba_schedule=nba_schedule, 
                            news=news, nba_standings=nba_standings)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 '''
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
