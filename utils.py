@@ -198,8 +198,7 @@ print ass_leaders
 # Will return the current divisional standings in the NBA
 # 
 # Parameters: The desired year... the 2015-2106 season would be '2015'. This API only works for the last three seasons
-
-def getStandings(year):
+def getEStandings(year):
   key = 'vxanp3p3cspvv57g9sg7y3mh'
   f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/%s/REG/standings.json?api_key=%s' % (year, key))
   json_string = f.read()
@@ -207,44 +206,60 @@ def getStandings(year):
   eastdata = parsed_json['conferences'][0]
   westdata = parsed_json['conferences'][1]
   
+  east = []
   d = 0
   t = 0
   check = 0
-  result = 'Eastern Conference<br><br>'
   while d < len(eastdata['divisions']):
+    temp = {}
+    temp['name'] = eastdata['divisions'][d]['name']
+    teams = []
     while t < len(eastdata['divisions'][d]['teams']):
       current = eastdata['divisions'][d]['teams'][t]
-      if t == 0:
-        result += eastdata['divisions'][d]['name'] + '<br>' + '<table class="table table-striped">'
-        result += '<thead><tr><th>Position</th><th>Team Name</th><th>Record</th><th>Win %</th><th>L10</th></tr></thead><tbody>'
-      result += '<tr><td>' + str(t+1) + '</td>' + '<td>' + current['market'] + ' ' + current['name'] + '</td>'
-      result += '<td>' + str(current['wins']) + '-' + str(current['losses']) + '</td>' 
-      result += '<td>' + str(current['win_pct']) + '</td>'
-      result += '<td>' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '</td></tr></tbody>'
+      result = {}
+      #eastdata['divisions'][d]['name']
+      result['position'] = str(t+1)
+      result['name'] = current['market'] + ' ' + current['name']
+      result['record'] = str(current['wins']) + '-' + str(current['losses'])
+      result['win_pct'] = str(current['win_pct'])
+      result['last10'] = str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses'])
+      teams.append(result)
       t = t + 1
-    result += '</table><br><br>'
+    temp['teams'] = teams
+    east.append(temp)
     d = d + 1
     t = 0
-                               
+  return east
+
+def getWStandings(year):
+  key = 'vxanp3p3cspvv57g9sg7y3mh'
+  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/%s/REG/standings.json?api_key=%s' % (year, key))
+  json_string = f.read()
+  parsed_json = json.loads(json_string)
+  westdata = parsed_json['conferences'][1]
   west = []
   d = 0
   t = 0
-  result += 'Western Conference<br><br>'
   while d < len(westdata['divisions']):
+    temp = {}
+    temp['name'] = westdata['divisions'][d]['name']
+    teams = []
     while t < len(westdata['divisions'][d]['teams']):
       current = westdata['divisions'][d]['teams'][t]
-      if t == 0:
-        result += westdata['divisions'][d]['name'] + '<br>' + '<table class="table table-striped">'
-        result += '<thead><tr><th>Position</th><th>Team Name</th><th>Record</th><th>Win %</th><th>L10</th></tr></thead><tbody>'
-      result += '<tr><td>' + str(t+1) + '</td>' + '<td>' + current['market'] + ' ' + current['name'] + '</td>'
-      result += '<td>' + str(current['wins']) + '-' + str(current['losses']) + '</td>'
-      result += '<td>' + str(current['win_pct']) + '</td>'
-      result += '<td>' + str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses']) + '</td></tr></tbody>'
+      result = {}
+      result['position'] = str(t+1)
+      result['name'] = current['market'] + ' ' + current['name']
+      result['record'] = str(current['wins']) + '-' + str(current['losses'])
+      result['win_pct'] = str(current['win_pct'])
+      result['last10'] = str(current['records'][6]['wins']) + '-' + str(current['records'][6]['losses'])
+      teams.append(result)
       t = t + 1
-    result += '</table><br><br>'
+    temp['teams'] = teams
+    west.append(temp)
     d = d + 1
     t = 0
-  return result
+  return west
+
 
 '''
 #### OUTPUT TESTING

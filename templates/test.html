@@ -144,7 +144,21 @@
 	    </div>
 	  </div>
 	</div>
-	{{ nba_standings }}
+	{% for division in east_standings %}
+	<h3>{{ division['name'] }}</h3><br>
+	<table class = "table table-striped">
+	  <thead>
+	    <tr><th>Position</th><th>Team</th><th>Record/<th><th>Win%</th><th>L10</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for team in divison['teams'] %}
+	    <tr><td>{{team['position']}}</td><td>{{team['name']}}</td><td>{{team['record']}}</td><td>{{team['win_pct']}}</td><td>{{team['last10']}}</td></tr>
+	    {% end for %}
+	    </tbody>
+	  </table>
+	{% endfor %}
+
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
 	<!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
