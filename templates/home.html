@@ -83,6 +83,14 @@
     <div class = "neighborhood-guides">
       <div class = "container">
         <h2> Bits. </h2>
+		<div class="row">
+		  <div class="col-md-4">
+	        <input class="btn btn-primary" type="file" accept="audio/*" id="audioInput">
+			<br>
+			<audio id="audio" controls>
+			</audio>
+		  </div>
+		</div>
         <div class = "row">
 	  <div class = "col-md-4">
 	    <div class = "thumbnail">
@@ -193,7 +201,7 @@
 
 	  <script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	  <script src="{{url_for('static', filename='digitalClock.js')}}"></script>
-	  <!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
+	  <script src="{{url_for('static', filename='audio.js')}}"></script>
   </body>
   <br>
   <br>
