@@ -1,5 +1,3 @@
-var twelveHours = true;
-
 var days = new Array(7);
 days[0] = "Sunday";
 days[1] = "Monday";
@@ -23,34 +21,39 @@ months[9] = "October";
 months[10] = "November";
 months[12] = "December";
 
-displayClock(twelveHours);
-setInterval(displayClock, 100, twelveHours);
+displayClock();
+setInterval(displayClock, 100);
 
-function displayClock(twelveHours) {
-    var clock = document.getElementById("digitalClock");
+function displayClock(twentyFourHours) {
+	var digitalClock = document.getElementById("digitalClock");
+	var twentyFourHours = document.getElementById("twentyFourHours").checked;
+	var yesDate = document.getElementById("yesDate").checked;
+	var changeColor = document.getElementById("changeColor").checked;
     var now = new Date();
     var hour = now.getHours();
     var minute = now.getMinutes();
     var second = now.getSeconds();
 	var hh;
-	var am_pm, date = "";
+	var am_pm, date;
+	am_pm = date = "";
 	
-	if(twelveHours) {
-	    // ~~ is equivalent to Math.floor here
-		hh = hour % 12;
-		am_pm = hour >= 12 ? " PM" : " AM";
+	if(twentyFourHours) {
+		hh = "" + ~~(hour/10) + hour % 10;
 	}
 	else {
-		hh = "" + ~~(hour/10) + hour % 10;
+		hh = hour % 12;
+		am_pm = hour >= 12 ? " PM" : " AM";
 	}
 	
    	var time = [hh,
                 "" + ~~(minute/10) + minute % 10,
                 "" + ~~(second/10) + second % 10];
 	
+	if(yesDate) {
+		date = days[now.getDay()] + ", " + months[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+	}
 	
-    clock.innerHTML = time.join(":") + am_pm + "<br>"
-	                  + days[now.getDay()] + ", " + months[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+	digitalClock.innerHTML = time.join(":") + am_pm + "<br>" + date;
 	
 	// out of 360 for hsl
 	var degree = (now.getSeconds() + now.getMilliseconds() / 1000) * 6;
@@ -58,9 +61,12 @@ function displayClock(twelveHours) {
 	var color = "hsl("
 	            + degree
 				+ ", 100%, 50%)";
-	
-	var digitalClock = document.getElementById("digitalClock");
-	
-	digitalClock.style.backgroundColor = "hsl(" + degree + ", 100%, 90%)";
-	digitalClock.style.color = "black";//"hsl(" + (degree + 180) % 360 + ", 100%, 20%)";
+	if(changeColor) {
+		digitalClock.style.backgroundColor = "hsl(" + degree + ", 100%, 90%)";
+		digitalClock.style.color = "black";//"hsl(" + (degree + 180) % 360 + ", 100%, 20%)";
+	}
+	else {
+		digitalClock.style.backgroundColor = "white";
+		digitalClock.style.color = "black";
+	}
 };
