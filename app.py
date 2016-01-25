@@ -77,9 +77,18 @@ def schedule():
     standings = utils.getStandings('2015')
     return render_template('nba_standings.html',standings=standings )
 
+if __name__ == '__main__':
+  app.debug = True
+  app.secret_key = 'blah'
+  app.run(host="0.0.0.0", port=8000)
 
 
 '''
+COULD NOT FIGURE OUT THE PURPOSE OF LOGIN/LOGOUT
+AND WERE SHORT ON TIME DUE TO PREVIOUS COMPLICATIONS
+
+
+
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
 @app.route('/login', methods=['GET', 'POST'])
@@ -150,7 +159,3 @@ def user_settings():
     return render_template('user.html', username=user, userdata=userdata)
 '''
 
-if __name__ == '__main__':
-  app.debug = True
-  app.secret_key = 'blah'
-  app.run(host="0.0.0.0", port=8000)
