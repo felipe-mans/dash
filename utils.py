@@ -282,10 +282,11 @@ for i in y:
 #print "\n\n"
 #print getWeatherByCity('NY', 'Brooklyn')
 #print getWeatherByCity('CA', 'San_Francisco')
-#print getWeatherByZip('10024')
 #print getStandings('2015')
 '''
 
 #print getEStandings('2015')
 #print getWStandings('2015')
+
+
 

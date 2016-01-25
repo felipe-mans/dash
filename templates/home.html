@@ -177,11 +177,12 @@
 	    </div>
 	    <div class = "col-md-4">
 	      <form method="POST" action="/home">
-		US City or Zip:
+		US City (ex: New York, NY) or Zip (90210):
 		<input type="text" name="location"><br><br>
 		<input type="submit" value="Submit">
 	      </form>
 	      <b> {{ weather }} </b>
+	      <b> {{ weather_error_message }} </b>
 	    </div>
 	  </div>
 	</div>

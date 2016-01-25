@@ -20,20 +20,43 @@ def home():
     day = time.day
     nba_schedule = utils.NBA_D_Sched(year, month, day) ## daily schedule
 
-    ## WEATHER ##
-    input = request.form.get('location', '')
-    print input
+    if request.method == "GET":
+        news = utils.getMostPop('mostviewed', 'sports', '7')
+        weather = utils.getWeatherByCity('NY', 'New_York')
+        return render_template('home.html', 
+                               weather=weather, 
+                               nba_schedule=nba_schedule, 
+                               news=news)
 
+    ## WEATHER ##
+    weather = ''
+    weather_input = request.form.get('location', '')
+    weather_error_message = ''
+
+    if weather_input.isdigit():
+        try:
+            weather = utils.getWeatherByZip(str(weather_input))
+        except: 
+            weather_error_message = "Bad Zipcode. Retry."
+    else:
+        weather_input = ' '.join(word[0].upper() + word[1:] for word in weather_input.split())
+        try: 
+            weather_input_city = weather_input[0:weather_input.index(',')]
+            weather_input_city = weather_input_city.replace (" ", "_").strip()
+            weather_input_state = weather_input[weather_input.index(',')+1:].upper().strip()
+            weather = utils.getWeatherByCity(str(weather_input_state), str(weather_input_city))
+        except: 
+            weather_error_message = "Cannot find city. Try again."
     ## NYT Section ##
     section = request.form.get('section', '')
     print section
-
+    
     if section == '':
         section = 'sports' #default
     news = utils.getMostPop('mostviewed', section, '7')
-    weather = utils.getWeatherByCity('NY', 'New_York')
-    return render_template('test.html', 
-                           weather=weather, 
+    return render_template('home.html', 
+                           weather = weather, 
+                           weather_error_message=weather_error_message,
                            nba_schedule=nba_schedule, 
                            news=news)
     
