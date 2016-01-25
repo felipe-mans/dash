@@ -12,28 +12,29 @@ dbm = DatabaseManager.create()
 @app.route('/')
 @app.route('/home')
 def home():
-
-    return render_template('index.html')    
-
-@app.route('/test')
-def test():
     weather = utils.getWeatherByCity('NY', 'Brooklyn')
     nba_schedule = utils.NBA_D_Sched(2016, 01, 24)
     news = utils.getMostPop('mostviewed', 'sports', '7')
-    standings = utils.getStandings('2015')
-    #print east_standings
-    #west_standings = utils.getWStandings('2015')
     return render_template('test.html', 
                            weather=weather, 
                            nba_schedule=nba_schedule, 
-                           news=news, 
-                           standings=standings)
-                           #west_standings=west_standings)
+                           news=news)
 
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/nba_standings')
+def schedule():
+    standings = utils.getStandings('2015')
+    return render_template('nba_standings.html',standings=standings )
+
+
 
 '''
 ### LOGIN
