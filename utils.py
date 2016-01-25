@@ -272,4 +272,4 @@ for i in y:
 #print getStandings('2015')
 '''
 
-print getStandings('2015')
+#print getStandings('2015')
