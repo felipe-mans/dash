@@ -20,14 +20,14 @@ def test():
     weather = utils.getWeatherByCity('NY', 'Brooklyn')
     nba_schedule = utils.NBA_D_Sched(2016, 01, 24)
     news = utils.getMostPop('mostviewed', 'sports', '7')
-    east_standings = utils.getEStandings('2015')
+    standings = utils.getStandings('2015')
     #print east_standings
     #west_standings = utils.getWStandings('2015')
     return render_template('test.html', 
                            weather=weather, 
                            nba_schedule=nba_schedule, 
                            news=news, 
-                           east_standings=east_standings)
+                           standings=standings)
                            #west_standings=west_standings)
 
 

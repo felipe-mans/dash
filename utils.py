@@ -198,14 +198,16 @@ print ass_leaders
 # Will return the current divisional standings in the NBA
 # 
 # Parameters: The desired year... the 2015-2106 season would be '2015'. This API only works for the last three seasons
-def getEStandings(year):
+def getStandings(year):
   key = 'vxanp3p3cspvv57g9sg7y3mh'
   f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/%s/REG/standings.json?api_key=%s' % (year, key))
   json_string = f.read()
   parsed_json = json.loads(json_string)
   eastdata = parsed_json['conferences'][0]
   westdata = parsed_json['conferences'][1]
-  
+  nba = []
+  sorry = {}
+  sorry['name'] = 'Eastern Conference'
   east = []
   d = 0
   t = 0
@@ -229,15 +231,11 @@ def getEStandings(year):
     east.append(temp)
     d = d + 1
     t = 0
-  return east
-
-def getWStandings(year):
-  key = 'vxanp3p3cspvv57g9sg7y3mh'
-  f = urllib2.urlopen('http://api.sportradar.us/nba-t3/seasontd/%s/REG/standings.json?api_key=%s' % (year, key))
-  json_string = f.read()
-  parsed_json = json.loads(json_string)
-  westdata = parsed_json['conferences'][1]
+  sorry['divisions'] = east
+  nba.append(sorry)  
   west = []
+  again = {}
+  again['name'] = 'Western Conference'
   d = 0
   t = 0
   while d < len(westdata['divisions']):
@@ -258,7 +256,9 @@ def getWStandings(year):
     west.append(temp)
     d = d + 1
     t = 0
-  return west
+  again['divisions'] = west
+  nba.append(again)
+  return nba
 
 
 '''

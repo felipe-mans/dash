@@ -149,11 +149,14 @@
 	    </div>
 	  </div>
 	</div>
-	{% for division in east_standings %}
-	<h3>{{ division['name'] }}</h3><br>
+	{% for conference in standings %}
+	<h3>{{ conference['name'] }}</h3><br><br>
+	{% for division in conference['divisions'] %}
+	<h4>{{ division['name'] }}</h4>
 	<table class = "table table-striped">
 	  <thead>
-	    <tr><th>Position</th><th>Team</th><th>Record/<th><th>Win%</th><th>L10</th>
+	    <tr><th>Position</th><th>Team</th><th>Record</th><th>Winning
+	    Percentage</th><th>Last 10</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -161,7 +164,9 @@
 	    <tr><td>{{team['position']}}</td><td>{{team['name']}}</td><td>{{team['record']}}</td><td>{{team['win_pct']}}</td><td>{{team['last10']}}</td></tr>
 	    {% endfor %}
 	    </tbody>
-	  </table>
+	  </table><br>
+	{% endfor %}
+	<br>
 	{% endfor %}
 
 
