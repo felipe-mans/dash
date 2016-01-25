@@ -1,6 +1,9 @@
 # dash
 Welcome to dash. 
 
+### Youtube video link: ____________
+
+## Goal
 Our goal is to create a user-friendly, highly customizable dashboard that houses a bunch of your favorite stuff all on one site. Users will make accounts and change their settings as they wish. When logged in, dash will display the many different things (clock, weather, sports stats, notepad, etc) that the user chooses to include on their dash. 
 
 ## Members
@@ -12,11 +15,11 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 ## Features:
 
 ### Basics:
-* Weather of your selected cities
-* Sports news/scores
-* Top news stories
+* Weather of your selected cities (√)
+* Sports news/scores (√)
+* Top news stories (√)
+* Clocks (√)
 * Bookmarks to your favorite sites
-* Clocks of your selected locations
 * Todo List
 * Notes
 * Timer
@@ -24,8 +27,8 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 
 ### Possible, More Advanced Features:
 
-* Mini MP3 player
+* Mini MP3 player (√√)
 * Mini game
 * Email service
-* ... and more
+* ... and more??
 
