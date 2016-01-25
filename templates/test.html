@@ -42,41 +42,39 @@
       </div>
     </nav>
 
-    <div class="jumbotron">
-      <div class="col-md-6 pull-left">
-	<div class="container theme-showcase" role = "main">
-          <h1>dash.</h1>
-          <p>A basket full of useful widgets.</p>
-          <a href="/about">Learn More</a>
-	</div>
+    <div class="jumbotron col-md-6 pull-left">
+      <div class="container theme-showcase" role = "main">
+        <h1>dash.</h1>
+        <p>A basket full of useful widgets.</p>
+        <a href="/about">Learn More</a> <br><br><br><br><br><br><br>
       </div>
-      <div class="col-md-6 pull-right">
-	<div class="row pull-right">
-	  <div class="col-md-4 pull-right">
-	    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
+    </div>
+    <div class="jumbotron col-md-6 pull-right">
+      <div class="row pull-right">
+	<div class="col-md-4 pull-right">
+	  <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
+	  <div class="checkbox pull-right">
+	    <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
+	  </div>
+	  <div class="checkbox pull-right">
+	    <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
+	  </div>
+	</div>
+	<div class="col-md-4 pull-right">
+	  <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
+	  <form>
 	    <div class="checkbox pull-right">
-	      <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
+	      <label><input type="checkbox"
+			    id="digitalTwentyFourHours">24-hour</label>
 	    </div>
 	    <div class="checkbox pull-right">
-	      <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
+	      <label><input type="checkbox" id="digitalYesDate"
+			    checked>Date</label>
 	    </div>
-	  </div>
-	  <div class="col-md-4 pull-right">
-	    <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
-	    <form>
-	      <div class="checkbox pull-right">
-		<label><input type="checkbox"
-			      id="digitalTwentyFourHours">24-hour</label>
-	      </div>
-	      <div class="checkbox pull-right">
-		<label><input type="checkbox" id="digitalYesDate"
-			      checked>Date</label>
-	      </div>
-	      <div class="checkbox pull-right">
-		<label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
-	      </div>
-	    </form>
-	  </div>
+	    <div class="checkbox pull-right">
+	      <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
+	    </div>
+	  </form>
 	</div>
       </div>
     </div>
