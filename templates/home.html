@@ -75,6 +75,16 @@
 	  <div class="checkbox">
 	    <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
 	  </div>
+	  <br>
+	  <div class="container pull-left">
+	    <div class="col-md-4">
+	      Select an <br> MP3 file. <br> Listen Up. <br>
+	      <input class="btn btn-primary" type="file" accept="audio/*" id="audioInput">
+	      <br>
+	      <audio id="audio" controls>
+	      </audio>
+	    </div>
+	  </div>
 	</form>
       </div> 
     </div>
@@ -83,14 +93,6 @@
     <div class = "neighborhood-guides">
       <div class = "container">
         <h2> Bits. </h2>
-		<div class="row">
-		  <div class="col-md-4">
-	        <input class="btn btn-primary" type="file" accept="audio/*" id="audioInput">
-			<br>
-			<audio id="audio" controls>
-			</audio>
-		  </div>
-		</div>
         <div class = "row">
 	  <div class = "col-md-4">
 	    <div class = "thumbnail">
@@ -188,7 +190,7 @@
 		US City (ex: New York, NY) or Zip (90210):
 		<input type="text" name="location"><br><br>
 		<input type="submit" value="Submit">
-	      </form>
+	      </form> <br>
 	      <b> {{ weather }} </b>
 	      <b> {{ weather_error_message }} </b>
 	    </div>
@@ -201,8 +203,10 @@
 
 	  <script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	  <script src="{{url_for('static', filename='digitalClock.js')}}"></script>
-	  <script src="{{url_for('static', filename='audio.js')}}"></script>
+	  <!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
   </body>
+  <br>
+  <br>
   <br>
   <br>
   <br>
