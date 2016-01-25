@@ -18,9 +18,6 @@ def home():
     if len(month) == 1:
         month = '0' + month
     day = time.day
-    print year
-    print month
-    print day
     ###
     weather = utils.getWeatherByCity('NY', 'Brooklyn')
     nba_schedule = utils.NBA_D_Sched(year, month, day) ## daily schedule
