@@ -49,7 +49,7 @@
         <p>A basket full of useful widgets.</p>
         <a href="/about">Learn More</a>
       </div>
-      <div class="container">
+      <div class="container" align="right">
 	<div class="row">
 	  <div class="col-md-4">
 	    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
@@ -64,10 +64,12 @@
 	    <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
 	    <form>
 	      <div class="checkbox">
-		<label><input type="checkbox" id="digitalTwentyFourHours">24-hour</label>
+		<label><input type="checkbox"
+		id="digitalTwentyFourHours">24-hour</label>
 	      </div>
 	      <div class="checkbox">
-		<label><input type="checkbox" id="digitalYesDate" checked>Date</label>
+		<label><input type="checkbox" id="digitalYesDate"
+		checked>Date</label>
 	      </div>
 	      <div class="checkbox">
 		<label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
@@ -102,10 +104,25 @@
 	  <div class="container">
 	    <div class="row">
 	      <div class = "col-md-4">
+		<form>
+		  <select name="sections">
+		    <option value="world">World</option>
+		    <option value="national">National</option>
+		    <option value="politics">Politics</option>
+		    <option value="business">Business</option>
+		    <option value="opinion">Opinon</option>
+		    <option value="technology">Technology</option>
+		    <option value="science">Science</option>
+		    <option value="health">Health</option>
+		    <option value="sports">Sports</option>
+		    <option value="arts">Arts</option>
+		  </select><br><br>
+		  <input type="submit">
+		</form>
 		<table class = "table table-striped">
 		  <thead> 
 		    <tr>
-		      <th> Your News.  </th>
+		      <th> Your News.</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -133,6 +150,11 @@
 		</table>
 	      </div>
 	      <div class = "col-md-4">
+		<form>
+		  City:
+		  <input type="text" name="city"><br><br>
+		  <input type="submit" value="Submit">
+		</form>
 		<b> {{ weather }} </b>
 	      </div>
 	    </div>
