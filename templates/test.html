@@ -42,14 +42,15 @@
       </div>
     </nav>
 
-
     <div class="jumbotron">
-      <div class="container theme-showcase" role = "main">
-        <h1>dash.</h1>
-        <p>A basket full of useful widgets.</p>
-        <a href="/about">Learn More</a>
+      <div class="col-md-6 pull-left">
+	<div class="container theme-showcase" role = "main">
+          <h1>dash.</h1>
+          <p>A basket full of useful widgets.</p>
+          <a href="/about">Learn More</a>
+	</div>
       </div>
-      <div class="container">
+      <div class="col-md-6 pull-right">
 	<div class="row pull-right">
 	  <div class="col-md-4 pull-right">
 	    <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
@@ -65,11 +66,11 @@
 	    <form>
 	      <div class="checkbox pull-right">
 		<label><input type="checkbox"
-		id="digitalTwentyFourHours">24-hour</label>
+			      id="digitalTwentyFourHours">24-hour</label>
 	      </div>
 	      <div class="checkbox pull-right">
 		<label><input type="checkbox" id="digitalYesDate"
-		checked>Date</label>
+			      checked>Date</label>
 	      </div>
 	      <div class="checkbox pull-right">
 		<label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
@@ -79,112 +80,116 @@
 	</div>
       </div>
     </div>
-       
-    <hr>
-	<div class="learn-more">
-	  <div class="container">
-	    <div class="row">
-	      <div class = "col-md-4">
-		<h3>News Updates</h3>
-		<p> What's new? Find out. Courtesy of the New York Times.</p>
-	      </div>
-	      <div class = "col-md-4">
-		<h3>Sports Updates</h3>
-		<p>When is your team playing? What's their record. Find out. Courtesy of Sportsradar.</p>
-	      </div>
-	      <div class = "col-md-4">
-		<h3>Weather Updates</h3>
-		<p> What's the weather like? Don't need to ask someone else. Just find out here. Courtesy of Weather Underground. </p>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
-	<div class="learn-more">
-	  <div class="container">
-	    <div class="row">
-	      <div class = "col-md-4">
-		<form>
-		  <select name="sections">
-		    <option value="world">World</option>
-		    <option value="national">National</option>
-		    <option value="politics">Politics</option>
-		    <option value="business">Business</option>
-		    <option value="opinion">Opinon</option>
-		    <option value="technology">Technology</option>
-		    <option value="science">Science</option>
-		    <option value="health">Health</option>
-		    <option value="sports">Sports</option>
-		    <option value="arts">Arts</option>
-		  </select><br><br>
-		  <input type="submit">
-		</form>
-		<table class = "table table-striped">
-		  <thead> 
-		    <tr>
-		      <th> Your News.</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    {% for i in news %}
-		    <tr> <td> <b> {{ i['title'] }} </b> <br>{{ i['byline'] }} | Section: {{i['section']}} <br>
-			Date: {{i['published']}} <br> <br> <u>Abstract:</u> <i>  {{ i['abstract'] }} </i> <br> <a href={{i['url']}}> Go To Article </a> <br>
-		    {% endfor %}
-		  </tbody>
-		</table>
-	      </div>
-	      <div class = "col-md-4">
-		<br><a href="/nba_standings"> Click Here for Current Standings. </a><br><br>
-		<table class = "table table-striped">
-		  <thead> 
-		    <tr>
-		      <th> Your Games. </th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    {% for i in nba_schedule %}
-		    <tr> <td><b> {{ i['away_team'] }} @ {{ i['home_team'] }} </b> <br> {{ i['time'] }} PM <br>
-			Location: {{ i['arena'] }},  {{ i['city'] }} <br> Channel: {{ i['TV_station'] }} <br> </td> </tr>
-		    {% endfor %}
-		  </tbody>
-		</table>
-	      </div>
-	      <div class = "col-md-4">
-		<form>
-		  City:
-		  <input type="text" name="city"><br><br>
-		  <input type="submit" value="Submit">
-		</form>
-		<b> {{ weather }} </b>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	<div class = "neighborhood-guides">
-        <div class = "container">
+    <div class = "neighborhood-guides">
+      <div class = "container">
         <h2> Bits. </h2>
         <div class = "row">
-	      <div class = "col-md-4">
-	        <div class = "thumbnail">
-	          <img src="../static/newyorktimes.jpg">
-	        </div>
-	      </div>
-	      <div class = "col-md-4">
-		<div class = "thumbnail">
-	          <img src="../static/sportsradar.jpg">
-	        </div>
-	      </div>
-	      <div class = "col-md-4">
-		<div class = "thumbnail">
-	          <img src="../static/wunderground.jpg">
-	        </div>
-             </div>
+	  <div class = "col-md-4">
+	    <div class = "thumbnail">
+	      <img src="../static/newyorktimes.jpg">
+	    </div>
+	  </div>
+	  <div class = "col-md-4">
+	    <div class = "thumbnail">
+	      <img src="../static/sportsradar.jpg">
+	    </div>
+	  </div>
+	  <div class = "col-md-4">
+	    <div class = "thumbnail">
+	      <img src="../static/wunderground.jpg">
+	    </div>
+          </div>
         </div>
+      </div>
+      
+      <hr>
+      <div class="learn-more">
+	<div class="container">
+	  <div class="row">
+	    <div class = "col-md-4">
+	      <h3>News Updates</h3>
+	      <p> What's new? Here are some top news stories by section. Courtesy of the New York Times.</p>
+	    </div>
+	    <div class = "col-md-4">
+	      <h3>Sports Updates</h3>
+	      <p> NBA Daily Schedule. Courtsey of Sportsradar. </p>
+	    </div>
+	    <div class = "col-md-4">
+	      <h3>Weather Updates</h3>
+	      <p> What's the weather like? Don't need to ask someone else. Just find out here. Courtesy of Weather Underground. </p>
+	    </div>
+	  </div>
+	</div>
+      </div>
 
-	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
-	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
-	<!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
+      <div class="learn-more">
+	<div class="container">
+	  <div class="row">
+	    <div class = "col-md-4">
+	      <form>
+		<select name="sections">
+		  <option value="world">World</option>
+		  <option value="national">National</option>
+		  <option value="politics">Politics</option>
+		  <option value="business">Business</option>
+		  <option value="opinion">Opinon</option>
+		  <option value="technology">Technology</option>
+		  <option value="science">Science</option>
+		  <option value="health">Health</option>
+		  <option value="sports">Sports</option>
+		  <option value="arts">Arts</option>
+		</select><br><br>
+		<input type="submit">
+	      </form>
+	      <table class = "table table-striped">
+		<thead> 
+		  <tr>
+		    <th> Your News.</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for i in news %}
+		  <tr> <td> <b> {{ i['title'] }} </b> <br>{{ i['byline'] }} | Section: {{i['section']}} <br>
+		      Date: {{i['published']}} <br> <br> <u>Abstract:</u> <i>  {{ i['abstract'] }} </i> <br> <a href={{i['url']}}> Go To Article </a> <br>
+		      {% endfor %}
+		</tbody>
+	      </table>
+	    </div>
+	    <div class = "col-md-4">
+	      <br><a href="/nba_standings"> Click Here for Current Standings. </a><br><br>
+	      <table class = "table table-striped">
+		<thead> 
+		  <tr>
+		    <th> Your Games. </th>
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for i in nba_schedule %}
+		  <tr> <td><b> {{ i['away_team'] }} @ {{ i['home_team'] }} </b> <br> {{ i['time'] }} PM <br>
+		      Location: {{ i['arena'] }},  {{ i['city'] }} <br> Channel: {{ i['TV_station'] }} <br> </td> </tr>
+		  {% endfor %}
+		</tbody>
+	      </table>
+	    </div>
+	    <div class = "col-md-4">
+	      <form>
+		City:
+		<input type="text" name="city"><br><br>
+		<input type="submit" value="Submit">
+	      </form>
+	      <b> {{ weather }} </b>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      
+      <div class = "neighborhood-guides">
+        <div class = "container">
+
+	  <script src="{{url_for('static', filename='analogClock.js')}}"></script>
+	  <script src="{{url_for('static', filename='digitalClock.js')}}"></script>
+	  <!-- <script src="{{url_for('static', filename='digitalClock.js')}}">var twelveHours = {{twelveHours}};</script> -->
   </body>
   <br>
   <br>
