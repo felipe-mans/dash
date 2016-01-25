@@ -152,12 +152,13 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    {% for team in divison['teams'] %}
+	    {% for team in division['teams'] %}
 	    <tr><td>{{team['position']}}</td><td>{{team['name']}}</td><td>{{team['record']}}</td><td>{{team['win_pct']}}</td><td>{{team['last10']}}</td></tr>
-	    {% end for %}
+	    {% endfor %}
 	    </tbody>
 	  </table>
 	{% endfor %}
+
 
 	<script src="{{url_for('static', filename='analogClock.js')}}"></script>
 	<script src="{{url_for('static', filename='digitalClock.js')}}"></script>
