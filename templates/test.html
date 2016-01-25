@@ -141,7 +141,7 @@
 		<option value="arts">Arts</option>
 	      </select><br><br>
 
-	      <form action="/home" id="nytimes">
+	      <form action="/home" method="POST" id="nytimes">
 		<input type="submit" value="Submit">
 	      </form>
 
@@ -176,9 +176,9 @@
 	      </table>
 	    </div>
 	    <div class = "col-md-4">
-	      <form>
-		City:
-		<input type="text" name="city"><br><br>
+	      <form method="POST" action="/home">
+		US City or Zip:
+		<input type="text" name="location"><br><br>
 		<input type="submit" value="Submit">
 	      </form>
 	      <b> {{ weather }} </b>

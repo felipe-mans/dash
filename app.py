@@ -20,12 +20,16 @@ def home():
     day = time.day
     nba_schedule = utils.NBA_D_Sched(year, month, day) ## daily schedule
 
+    ## WEATHER ##
+    input = request.form.get('location', '')
+    print input
+
     ## NYT Section ##
     section = request.form.get('section', '')
     print section
 
-    #if section == '':
-    #    section = 'sports' #default
+    if section == '':
+        section = 'sports' #default
     news = utils.getMostPop('mostviewed', section, '7')
     weather = utils.getWeatherByCity('NY', 'New_York')
     return render_template('test.html', 
