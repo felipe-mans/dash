@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import redirect, render_template, request, session
-import time
+import datetime
+time = datetime.datetime.now()
 
 import utils
 ##from server.database_manager import DatabaseManager
@@ -12,8 +13,17 @@ dbm = DatabaseManager.create()
 @app.route('/')
 @app.route('/home')
 def home():
+    year = str(time.year)
+    month = str(time.month)
+    if len(month) == 1:
+        month = '0' + month
+    day = time.day
+    print year
+    print month
+    print day
+    ###
     weather = utils.getWeatherByCity('NY', 'Brooklyn')
-    nba_schedule = utils.NBA_D_Sched(2016, 01, 24)
+    nba_schedule = utils.NBA_D_Sched(year, month, day) ## daily schedule
     news = utils.getMostPop('mostviewed', 'sports', '7')
     return render_template('test.html', 
                            weather=weather, 
