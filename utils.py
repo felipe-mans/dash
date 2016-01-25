@@ -1,5 +1,6 @@
 import urllib2, json, requests
 from operator import itemgetter
+import datetime
 
 
 #----------------------- API Functions ----------------------------------
@@ -13,10 +14,8 @@ def getWeatherByCity(StateAbbrv, CityName):
   key = "bac9dac8506a2912"
 
   f = urllib2.urlopen('http://api.wunderground.com/api/%s/geolookup/conditions/q/%s/%s.json' % (key, StateAbbrv, CityName))
-  #http://api.wunderground.com/api/Your_Key/forecast/q/CA/San_Francisco.json
   json_string = f.read()
   parsed_json = json.loads(json_string)
-  #print parsed_json
   location = parsed_json['location']['city']
   temp_f = parsed_json['current_observation']['temp_f']
   weather = parsed_json['current_observation']['weather']
