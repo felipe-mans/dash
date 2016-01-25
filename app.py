@@ -25,18 +25,15 @@ def test():
     return render_template('test.html', 
                            weather=weather, 
                            nba_schedule=nba_schedule, 
-<<<<<<< HEAD
                            news=news, 
                            east_standings=east_standings, 
                            west_standings=west_standings)
-=======
-                           news=news, nba_standings=nba_standings)
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
->>>>>>> 4770c718b33f421f96273358a94e8738ca4fdb67
 '''
 ### LOGIN
 ## taken from David and Alvin's api-project, WeatherText
