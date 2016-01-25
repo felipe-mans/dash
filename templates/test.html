@@ -42,42 +42,43 @@
       </div>
     </nav>
 
-    <div class="jumbotron col-md-6 pull-left">
-      <div class="container theme-showcase" role = "main">
-        <h1>dash.</h1>
-        <p>A basket full of useful widgets.</p>
-        <a href="/about">Learn More</a> <br><br><br><br><br><br><br>
-      </div>
-    </div>
-    <div class="jumbotron col-md-6 pull-right">
-      <div class="row">
-	<div class="col-md-3 pull-left">
-	  <canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
-	  <div class="checkbox">
-	    <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
-	  </div>
-	  <div class="checkbox">
-	    <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
-	  </div>
-	</div>
-	<div class="col-md-3 pull-right">
-	  <div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
-	  <form>
-	    <div class="checkbox">
-	      <label><input type="checkbox"
-			    id="digitalTwentyFourHours">24-hour</label>
-	    </div>
-	    <div class="checkbox">
-	      <label><input type="checkbox" id="digitalYesDate"
-			    checked>Date</label>
-	    </div>
-	    <div class="checkbox">
-	      <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
-	    </div>
-	  </form>
+    <div class="jumbotron row theme-showcase">
+      <div class="jumbotron col-md-4 pull-left">
+	<div class="container theme-showcase" role = "main">
+          <h1>dash.</h1>
+          <p>A basket full of useful widgets.</p>
+          <a href="/about">Learn More</a>
 	</div>
       </div>
+
+      <div class="container col-md-4 theme-showcase pull-right"> <br><br>
+	<canvas id="analogClock" width="200" height="200" style="background-color: grey;"></canvas>
+	<div class="checkbox">
+	  <label><input type="checkbox" id="analogSmoothTicks" checked>Smooth ticks</label>
+	</div>
+	<div class="checkbox">
+	  <label><input type="checkbox" id="analogChangeColor" checked>Change color</label>
+	</div>
+      </div>
+
+      <div class="container col-md-4 theme-showcase pull-left"> <br><br>
+	<div id="digitalClock" class="digitalClock" style="display: inline-block; padding: 2px"></div>
+	<form>
+	  <div class="checkbox">
+	    <label><input type="checkbox"
+			  id="digitalTwentyFourHours">24-hour</label>
+	  </div>
+	  <div class="checkbox">
+	    <label><input type="checkbox" id="digitalYesDate"
+			  checked>Date</label>
+	  </div>
+	  <div class="checkbox">
+	    <label><input type="checkbox" id="digitalChangeColor" checked>Change color</label>
+	  </div>
+	</form>
+      </div> 
     </div>
+
 
     <div class = "neighborhood-guides">
       <div class = "container">
