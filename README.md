@@ -12,7 +12,8 @@ Our goal is to create a user-friendly, highly customizable dashboard that houses
 * Felipe Mansilla
 * Dalton Wu
 
-#### Note: This project is not as polished as we hoped it would be. Unfortunately, we ran into a couple of setbacks when developing the backend part of DASH, specifically, some of the API calls. Thus, we did not have nearly the amount of time we would have liked to solifiy the front end of the project, or add more widgets, such as sport stats, or an email service. Regardless, we thank you for checking out DASH, and hope that you enjoy what we have to offer.
+### Note
+This project is not as polished as we hoped it would be. Unfortunately, we ran into a couple of setbacks when developing the backend part of DASH, specifically, some of the API calls. Thus, we did not have nearly the amount of time we would have liked to solifiy the front end of the project, or add more widgets, such as sport stats, or an email service. Regardless, we thank you for checking out DASH, and hope that you enjoy what we have to offer.
 
 ## Features:
 
